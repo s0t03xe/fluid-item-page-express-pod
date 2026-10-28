@@ -90,13 +90,14 @@ interface ProductGalleryProps {
   videoSrc?: string;
   videoPoster?: string;
   emphasizeVideo?: boolean;
+  sponsored?: boolean;
   active?: boolean;
   onSwipePrevItem?: () => void;
   onSwipeNextItem?: () => void;
 }
 
 export default function ProductGallery(props: ProductGalleryProps = {}) {
-  const { heroImage, images, videoSrc, videoPoster, emphasizeVideo, onSwipePrevItem, onSwipeNextItem, active: cardActive = true } = props;
+  const { heroImage, images, videoSrc, videoPoster, emphasizeVideo, sponsored, onSwipePrevItem, onSwipeNextItem, active: cardActive = true } = props;
   const [active, setActive] = useState(0);
   const [liked, setLiked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -241,7 +242,7 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
         {slides.map((slide, i) => (
           <div
             key={i}
-            className={`relative w-full flex-shrink-0 snap-center overflow-hidden ${emphasizeVideo && slide.kind === "video" ? "h-[min(58vh,500px)]" : "aspect-square rounded-2xl"}`}
+            className={`relative w-full flex-shrink-0 snap-center overflow-hidden ${emphasizeVideo && slide.kind === "video" ? "h-[370px]" : "aspect-square rounded-2xl"}`}
           >
             {slide.kind === "photo" && (
               <>
@@ -331,6 +332,11 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
             />
           ))}
         </div>
+      )}
+      {sponsored && (
+        <span className="absolute inset-y-0 left-4 flex items-center text-[12px] leading-4 text-[#74767C]">
+          Sponsored
+        </span>
       )}
       <div className="absolute inset-y-0 right-4 flex items-center gap-4 text-ld-text-default">
         <button

@@ -122,6 +122,7 @@ export default function ItemPage({
               videoSrc={item.galleryVideoSrc}
               videoPoster={item.galleryVideoPoster}
               emphasizeVideo={isSponsoredVideo}
+              sponsored={isSponsoredVideo}
               active={active}
               onSwipePrevItem={onSwipePrevItem}
               onSwipeNextItem={onSwipeNextItem}
@@ -130,11 +131,6 @@ export default function ItemPage({
           </div>
 
           <div className="relative z-10 bg-white">
-            {isSponsoredVideo && (
-              <p className="px-4 pt-3 text-[12px] leading-4 text-[#74767C]">
-                Sponsored
-              </p>
-            )}
             <PdpSummary
               item={item}
               content={content}

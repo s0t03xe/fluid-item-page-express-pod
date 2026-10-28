@@ -67,6 +67,31 @@ export default function Index() {
 
   const open = (it: WalmartItem) => setOpenIndex(pagerIndexOf(it));
 
+  const scrollToItem = (id: string) => {
+    const root = scrollRef.current;
+    if (!root) return;
+    const matches = root.querySelectorAll<HTMLElement>(`[data-plp-id="${id}"]`);
+    const el = matches[matches.length - 1];
+    if (!el) return;
+    const hScroller = el.closest<HTMLElement>("[data-plp-hscroll]");
+    if (hScroller) {
+      const s = hScroller.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
+      hScroller.scrollLeft += r.left - s.left - (s.width - r.width) / 2;
+    }
+    const rootRect = root.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    root.scrollTop += r.top - rootRect.top - (root.clientHeight - r.height) / 2;
+  };
+
+  const closeModal = (selectedIndex: number) => {
+    if (selectedIndex !== openIndex) {
+      const target = PLP_ORDER[selectedIndex];
+      if (target) scrollToItem(target.id);
+    }
+    setOpenIndex(null);
+  };
+
   useEffect(() => {
     const target = sparkyCardRef.current;
     const root = scrollRef.current;
@@ -107,7 +132,7 @@ export default function Index() {
                 {ROWS.map((row, i) => (
                   <Fragment key={i}>
                     {row.kind === "card" && (
-                      <div className="px-4">
+                      <div className="px-4" data-plp-id={row.item.id}>
                         <PLPProductCard
                           item={row.item}
                           onSelect={() => open(row.item)}
@@ -115,10 +140,12 @@ export default function Index() {
                       </div>
                     )}
                     {row.kind === "video" && (
-                      <PLPVideoCard
-                        item={VIDEO_ITEM}
-                        onSelect={() => open(VIDEO_ITEM)}
-                      />
+                      <div data-plp-id={VIDEO_ITEM.id}>
+                        <PLPVideoCard
+                          item={VIDEO_ITEM}
+                          onSelect={() => open(VIDEO_ITEM)}
+                        />
+                      </div>
                     )}
                     {row.kind === "stars" && (
                       <PLPStarsCarousel items={STARS_ITEMS} onSelect={open} />
@@ -149,7 +176,7 @@ export default function Index() {
               <ItemPageModal
                 items={PLP_ORDER}
                 startIndex={openIndex}
-                onClose={() => setOpenIndex(null)}
+                onClose={closeModal}
                 presentation={concept === 4 ? "sheet" : "modal"}
                 bottomIndicator={
                   concept === 2 ? "dock" : concept === 3 ? "dots" : "none"

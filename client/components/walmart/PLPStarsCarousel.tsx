@@ -22,9 +22,9 @@ export default function PLPStarsCarousel({
         <span className="text-[13px] leading-4 text-[#74767C]">Sponsored</span>
       </div>
 
-      <div className="mt-3 flex gap-3 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div data-plp-hscroll className="mt-3 flex gap-3 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {items.map((item) => (
-          <div key={item.id} className="flex w-[168px] shrink-0 flex-col gap-1.5">
+          <div key={item.id} data-plp-id={item.id} className="flex w-[168px] shrink-0 flex-col gap-1.5">
             <div className="relative">
               <button
                 type="button"

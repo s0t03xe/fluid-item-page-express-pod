@@ -34,7 +34,7 @@ export default function ItemPageModal({
 }: {
   items: WalmartItem[];
   startIndex: number;
-  onClose: () => void;
+  onClose: (selectedIndex: number) => void;
   bottomIndicator?: "dock" | "dots" | "none";
   presentation?: "modal" | "sheet";
 }) {
@@ -96,7 +96,7 @@ export default function ItemPageModal({
         dragElastic={{ top: 0, bottom: 0.6 }}
         onDragEnd={(_, info) => {
           if (isSheet && (info.offset.y > 120 || info.velocity.y > 600)) {
-            onClose();
+            onClose(selected);
           }
         }}
         initial={isSheet ? { y: "100%" } : { y: 32, opacity: 0 }}
@@ -141,7 +141,7 @@ export default function ItemPageModal({
               >
                 <div className="pointer-events-none absolute inset-x-3 top-3 z-50 flex items-start justify-between">
                   <div className="pointer-events-auto">
-                    <OverlayButton aria-label="Close" onClick={onClose}>
+                    <OverlayButton aria-label="Close" onClick={() => onClose(selected)}>
                       <ChevronDown size={20} />
                     </OverlayButton>
                   </div>
