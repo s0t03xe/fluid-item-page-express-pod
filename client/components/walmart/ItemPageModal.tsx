@@ -42,6 +42,7 @@ export default function ItemPageModal({
     startIndex,
     loop: false,
     align: "center",
+    containScroll: false,
   });
   const [selected, setSelected] = useState(startIndex);
   const [atTopMap, setAtTopMap] = useState<Record<number, boolean>>({});
