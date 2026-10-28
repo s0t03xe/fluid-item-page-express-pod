@@ -7,9 +7,13 @@ const SPARKY_PROMPTS = [
   "How long does the battery last?",
 ];
 
-export function SparkyChips({ onOpen }: { onOpen: () => void }) {
+export function SparkyChips({ onOpen, compact }: { onOpen: () => void; compact?: boolean }) {
   return (
-    <section className="flex items-center gap-2 overflow-x-auto px-4 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <section
+      className={`flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+        compact ? "-mx-4 px-4" : "px-4 py-3"
+      }`}
+    >
       <img src={SPARKY_IMG} alt="Sparky" className="h-8 w-8 shrink-0" />
       {SPARKY_PROMPTS.map((p) => (
         <button

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { WalmartItem } from "@/lib/walmart-items";
 import type { PdpContent } from "@/lib/pdp-content";
 import { InfoIcon, Stars } from "@/components/walmart/pdp/ui";
@@ -35,10 +35,12 @@ export default function PdpSummary({
   item,
   content,
   onOpenReviews,
+  noVariantsExtra,
 }: {
   item: WalmartItem;
   content: PdpContent;
   onOpenReviews: () => void;
+  noVariantsExtra?: ReactNode;
 }) {
   const [color, setColor] = useState(0);
   const savings = savingsOf(item);
@@ -142,6 +144,8 @@ export default function PdpSummary({
         </div>
         <p className="text-[12px] leading-4 text-[#74767C]">Price when purchased online</p>
       </div>
+
+      {swatches.length <= 1 && noVariantsExtra}
 
       {returns && (
         <div className="flex w-fit items-center gap-2 rounded-lg bg-[#DCE3F0] px-3 py-2 text-[13px] leading-4 text-ld-text-default">

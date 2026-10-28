@@ -6,7 +6,7 @@ import OnePayCard from "@/components/walmart/OnePayCard";
 import PdpSummary from "@/components/walmart/pdp/PdpSummary";
 import PdpFulfillment from "@/components/walmart/pdp/PdpFulfillment";
 import { KeyFeatures, QuickActions, SparkyChips, Specifications } from "@/components/walmart/pdp/PdpDetails";
-import { PdpReviewsSheet, ReviewsSummary } from "@/components/walmart/pdp/PdpReviews";
+import { PdpReviewsSheet, ReviewHighlights, ReviewsSummary } from "@/components/walmart/pdp/PdpReviews";
 import { ListActions, ProtectionPlan, WalmartPlusBanner } from "@/components/walmart/pdp/PdpExtras";
 import {
   AboutThisItem,
@@ -84,6 +84,7 @@ export default function ItemPage({
   const content = getPdpContent(item);
   const hasContent = content.keyFeatures.length > 0;
   const hasAiSummary = content.videos.length > 0;
+  const hasVariants = content.colors.length > 1;
   const openCart = () => setSheet("cart");
 
   useEffect(() => {
@@ -162,6 +163,12 @@ export default function ItemPage({
               item={item}
               content={content}
               onOpenReviews={() => setSheet("reviews")}
+              noVariantsExtra={
+                <>
+                  <SparkyChips onOpen={() => setSheet("sparky")} compact />
+                  <ReviewHighlights content={content} onOpenReviews={() => setSheet("reviews")} />
+                </>
+              }
             />
           )}
           {isSponsoredVideo ? (
@@ -170,7 +177,7 @@ export default function ItemPage({
             <>
               <OnePayCard />
               <PdpFulfillment item={item} content={content} />
-              {hasAiSummary && <SparkyChips onOpen={() => setSheet("sparky")} />}
+              {hasAiSummary && hasVariants && <SparkyChips onOpen={() => setSheet("sparky")} />}
               <Divider />
               <KeyFeatures content={content} />
               <Specifications content={content} />
