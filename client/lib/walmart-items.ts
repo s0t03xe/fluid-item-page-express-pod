@@ -398,15 +398,19 @@ export const PLP_ORDER: WalmartItem[] = [
   "anc-45db-black",
   "hybrid-anc-headphones",
   "airpods-4",
-  "deal-45db-25-79",
-  "wireless-5-4-19-29",
-  "hybrid-53db-26-79",
   "deal-40h-black",
   "beats-studio-pro",
   "airpods-pro-3",
   "samsung-buds4-pro",
   "skullcandy-hesh",
   "onn-pink",
+].map(byId);
+
+/** Items in the item-page "4 stars and above" carousel; they open their own fluid pager. */
+export const STARS_ORDER: WalmartItem[] = [
+  "deal-45db-25-79",
+  "wireless-5-4-19-29",
+  "hybrid-53db-26-79",
 ].map(byId);
 
 /** Index of an item in the item-page pager. */

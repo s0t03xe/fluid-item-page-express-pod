@@ -34,7 +34,7 @@ import {
 import { Divider } from "@/components/walmart/pdp/ui";
 import PurchaseBar from "@/components/walmart/PurchaseBar";
 import { getPdpContent } from "@/lib/pdp-content";
-import type { WalmartItem } from "@/lib/walmart-items";
+import { STARS_ORDER, type WalmartItem } from "@/lib/walmart-items";
 
 export default function ItemPage({
   item,
@@ -42,6 +42,7 @@ export default function ItemPage({
   onSwipePrevItem,
   onSwipeNextItem,
   onOpenItem,
+  onOpenCarouselItem,
   onSheetOpenChange,
   active = true,
 }: {
@@ -51,6 +52,7 @@ export default function ItemPage({
   onSwipePrevItem?: () => void;
   onSwipeNextItem?: () => void;
   onOpenItem?: (item: WalmartItem) => void;
+  onOpenCarouselItem?: (items: WalmartItem[], index: number) => void;
   onSheetOpenChange?: (open: boolean) => void;
 }) {
   const atTopRef = useRef(true);
@@ -68,6 +70,11 @@ export default function ItemPage({
   const trtb = topReasonToBuy(item.id);
   const openCart = () => setSheet("cart");
   const openItem = (it: WalmartItem) => (onOpenItem ? onOpenItem(it) : openCart());
+  const openStarsItem = (it: WalmartItem) => {
+    const idx = STARS_ORDER.findIndex((x) => x.id === it.id);
+    if (onOpenCarouselItem && idx >= 0) onOpenCarouselItem(STARS_ORDER, idx);
+    else openCart();
+  };
 
   useEffect(() => {
     if (active) return;
@@ -109,7 +116,10 @@ export default function ItemPage({
   }, []);
 
   return (
-    <div className="relative h-full overflow-hidden bg-white">
+    <div
+      data-fluid-active={active ? "true" : "false"}
+      className="relative h-full overflow-hidden bg-white"
+    >
       <div
         ref={scrollRef}
         className="flex h-full flex-col overflow-y-auto bg-white [overflow-anchor:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -176,8 +186,8 @@ export default function ItemPage({
               <RatedCarousel
                 item={item}
                 title="4 stars and above"
-                minRating={4}
-                onSelect={openItem}
+                items={STARS_ORDER}
+                onSelect={openStarsItem}
               />
               <RatedCarousel
                 item={item}

@@ -31,16 +31,20 @@ export function RatedCarousel({
   onSelect,
   minRating = 0,
   offset = 0,
+  items,
 }: {
   item: WalmartItem;
   title: string;
   onSelect: (item: WalmartItem) => void;
   minRating?: number;
   offset?: number;
+  items?: WalmartItem[];
 }) {
-  const list = others(item)
-    .filter((i) => i.rating >= minRating)
-    .slice(offset, offset + 4);
+  const list = items
+    ? items.filter((i) => i.id !== item.id)
+    : others(item)
+        .filter((i) => i.rating >= minRating)
+        .slice(offset, offset + 4);
   if (list.length === 0) return null;
   return <PLPStarsCarousel items={list} title={title} onSelect={onSelect} />;
 }

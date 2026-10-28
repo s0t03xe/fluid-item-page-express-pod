@@ -31,12 +31,14 @@ export default function ItemPageModal({
   onClose,
   bottomIndicator = "dock",
   presentation = "modal",
+  onOpenCarousel,
 }: {
   items: WalmartItem[];
   startIndex: number;
   onClose: (selectedIndex: number) => void;
   bottomIndicator?: "dock" | "dots" | "none";
   presentation?: "modal" | "sheet";
+  onOpenCarousel?: (items: WalmartItem[], startIndex: number) => void;
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     startIndex,
@@ -157,6 +159,14 @@ export default function ItemPageModal({
                   }
                   onSwipePrevItem={() => {
                     if (!sheetOpenMap[i]) emblaApi?.scrollPrev();
+                  }}
+                  onOpenCarouselItem={(list, idx) => {
+                    if (sheetOpenMap[i]) return;
+                    const same =
+                      list.length === items.length &&
+                      list.every((x, j) => x.id === items[j].id);
+                    if (same) emblaApi?.scrollTo(idx);
+                    else onOpenCarousel?.(list, idx);
                   }}
                   onOpenItem={(it) => {
                     const idx = items.findIndex((x) => x.id === it.id);

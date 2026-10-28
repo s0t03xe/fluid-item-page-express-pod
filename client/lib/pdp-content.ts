@@ -1481,6 +1481,729 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
     "image": "https://i5.walmartimages.com/asr/6cdfbe6c-4373-4df0-b76c-b9da81d796f2.43650af23213b9f338d0b8ea67feddcb.png"
    }
   ]
+ },
+ "deal-45db-25-79": {
+  "title": "Active Noise Cancelling Headphones -45dB, Bluetooth Headphones 5.4, 60H Playtime Wireless Earbuds, Bass Boosted by 90%, ENC Clear Call, Over Ear Headphone for Travel Home Office PC Soot Black",
+  "priceDollars": "25",
+  "priceCents": "79",
+  "priceWas": "169.99",
+  "rating": 4.4,
+  "ratingCount": 89,
+  "brand": "IKT",
+  "seller": "IKT-US",
+  "badges": [
+   "Deal"
+  ],
+  "colors": [
+   {
+    "name": "Soot Black"
+   }
+  ],
+  "gallery": [
+   "https://i5.walmartimages.com/seo/Active-Noise-Cancelling-Headphones-45dB-Bluetooth-Headphones-5-4-60H-Playtime-Wireless-Earbuds-Bass-Boosted-90-ENC-Clear-Call-Ear-Headphone-Travel-Ho_7ceadea2-7d0a-4d10-855f-311b909c5611.7f51798f73aab5fed3523fcbe64b2a70.jpeg",
+   "https://i5.walmartimages.com/asr/bec08673-1cb6-4c20-8adb-9052837b20a4.c716069e4b70e7354ffc281b2d78b780.jpeg",
+   "https://i5.walmartimages.com/asr/880d22eb-fb5b-4b7b-ac7f-c90ed1d204c4.0b6ab4f5492d1f3d3c3eca28b82c367b.jpeg",
+   "https://i5.walmartimages.com/asr/43b8397c-81ed-4889-8f3c-5b78c49a9631.0708326da13ecf97c3210a0f8c1f93c5.jpeg",
+   "https://i5.walmartimages.com/asr/d137d2eb-75e4-4bdf-8a87-97c7fa7f6a96.c6caa7a32dfea21d30a43730640c6816.jpeg",
+   "https://i5.walmartimages.com/asr/6107ab3f-4f3d-46e8-8408-baa8aede2c3e.d0b545ad030c340e0f610f5b2fce6ada.jpeg"
+  ],
+  "videos": [],
+  "keyFeatures": [
+   "Battery life: 60 h",
+   "Headphone style: Over-Ear",
+   "Noise control technology: Active Noise Cancellation",
+   "Wireless: Y",
+   "Brand: IKT",
+   "Ip code: IPX7",
+   "Assembled product weight: 0.5 lb",
+   "Color: Black",
+   "Power type: Battery",
+   "Maximum transmission range: 33 ft"
+  ],
+  "about": [
+   "【-45dB Active Noise Cancellation】The headphones wireless bluetooth uses 2 built-in mics and 2 external mics working in tandem to pick up and filter up to 90% of low-frequency ambient noise, Intelligently shielded from outside noise (subways, airplanes, noisy streets, etc.). -45dB deep noise cancellation ensures that you won't be disturbed in any way, so you can concentrate on listening to your music. (Note: ANC mode does not support AUX cables).",
+   "【High-fidelity Sound Quality】These noise canceling headphones feature oversized 40mm dynamic drivers. The highly flexible silk diaphragm reproduces powerful bass (up to 90% boost) and clear treble (up to 20kHz). 24-bit audio resolution produces rich sound and powerful rhythms, revealing more sound details.",
+   "【60 Hrs Long Playtime】The LE821 wireless headphones bluetooth utilize low-power technology and are equipped with a 500mAh battery. With a single full charge, they can play music for up to 40 hrs in noise-canceling mode and extend playtime to 60 hrs in standard Bluetooth mode. Using the included 3.5mm audio cable, the headphones wireless noise cancelling can easily switch to wired mode when powered off. Say goodbye to low battery.",
+   "【Clear Hands-free Calling】The LE821 noise cancelling headphones bluetooth is equipped with 4 beamforming micrs and uses advanced CVC 8.0 audio signal processing technology. It can accurately pick up sound, giving you a clear call experience even in noisy environments.",
+   "【All-Day Comfort】Weighing just 228g, the headband incorporates a widened pressure-relief design. The ear cups feature an ergonomic oval full-coverage design paired with soft memory foam (slow rebound, high conformability, effectively dispersing pressure). They are soft against the skin and offer excellent breathability. The over ear wireless bluetooth headphones are also highly compatible with eyeglasses, with the ear cups accommodating temples comfortably. Perfect for long journeys and office use.",
+   "【Independent Button Controls】You can easily play/pause music, volume +/-, switch songs, answer/hang up calls, and activate the voice assistant by rotating the digital button and MFB button on the LE821 wireless headphones. Under bluetooth connection status, press and hold the digital button for about 2 s to switch between ANC mode and Bluetooth mode (for detailed instructions, please refer to the product manual included in the package).",
+   "【360° Spatial Surround Sound】The LE821 over ear bluetooth headphones use multi-channel layered rendering and head tracking technology to create a circular spatial audio field, allowing sounds to be precisely located from multiple dimensions. The over ear bluetooth headphones can detect even the slightest movement of your head in real time and intelligently adjust the sound field direction to create an immersive, enveloping sound experience.",
+   "【Stylish Gifts and Quality Customer Service】This wireless bluetooth noise canceling headphones has a fashionable design and rich and practical functions to make your daily life more convenient. Perfect gift for birthdays, anniversaries and special occasions. Package includes foldable over ear headphones wireless, 3.5mm spare audio cable, USB charging cable and user manual. We offer 30 days return and 12 months warranty. We encourage you to contact us with any product questions or suggestions."
+  ],
+  "specs": [
+   {
+    "name": "Battery life",
+    "value": "60 h"
+   },
+   {
+    "name": "Headphone style",
+    "value": "Over-Ear"
+   },
+   {
+    "name": "Noise control technology",
+    "value": "Active Noise Cancellation"
+   },
+   {
+    "name": "Wireless",
+    "value": "Y"
+   },
+   {
+    "name": "Wireless technology",
+    "value": "Bluetooth, None"
+   },
+   {
+    "name": "Features",
+    "value": "Built-in Microphone, Foldable, Voice-Activated"
+   },
+   {
+    "name": "Brand",
+    "value": "IKT"
+   },
+   {
+    "name": "Rec. use",
+    "value": "Classroom, Casual Listening, Sports"
+   },
+   {
+    "name": "Works with",
+    "value": "Android System, IOS System, Windows System"
+   },
+   {
+    "name": "Ip code",
+    "value": "IPX7"
+   },
+   {
+    "name": "Assembled product weight",
+    "value": "0.5 lb"
+   },
+   {
+    "name": "Color",
+    "value": "Black"
+   },
+   {
+    "name": "Accessories",
+    "value": "Foldable headphones*1, USB-C charging cable*1, 3.5mm audio cable*1, User manual*1"
+   },
+   {
+    "name": "Battery consumption type",
+    "value": "Integrated Rechargeable Battery"
+   },
+   {
+    "name": "Power type",
+    "value": "Battery"
+   },
+   {
+    "name": "Maximum transmission range",
+    "value": "33 ft"
+   },
+   {
+    "name": "Compatible smart control systems",
+    "value": "Google Assistant, Siri"
+   },
+   {
+    "name": "Virtual assistant",
+    "value": "Siri Voice Assistant, Google Voice Assistant"
+   },
+   {
+    "name": "Ear pad material",
+    "value": "Leather"
+   },
+   {
+    "name": "Cord length",
+    "value": "1 ft"
+   },
+   {
+    "name": "Generation",
+    "value": "1st Generation"
+   },
+   {
+    "name": "Material",
+    "value": "Plastic, Leather"
+   },
+   {
+    "name": "Video game platform",
+    "value": "PC"
+   },
+   {
+    "name": "Headphone type",
+    "value": "Headphones"
+   },
+   {
+    "name": "Model name",
+    "value": "LE821"
+   }
+  ],
+  "fulfillment": [
+   "Shipping, arrives by Fri, Oct 30 to San Jose, 95129",
+   "Pickup not available at a nearby store"
+  ],
+  "returns": "Free Holiday returns until Jan 31",
+  "reviewSummary": {
+   "average": 4.4,
+   "total": 89,
+   "histogram": {
+    "1": 10,
+    "2": 1,
+    "3": 3,
+    "4": 3,
+    "5": 72
+   },
+   "positive": [
+    "Secure conforming ear fit",
+    "Effective noise cancellation",
+    "Long lasting battery life",
+    "Great value for money",
+    "Clear sound quality"
+   ],
+   "negative": []
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "title": "Unbelievable bargain.",
+    "text": "These headphones are unbelievable, I expected something cheap and what got was top quality. I don't know if they ever sold for over $100.00 like they claim, but I really don't care. They seem to be top quality and that's all that matters. The noise reduction works just fine and the Bluetooth pairs easily with the tv. The stereo sound is great. Ask as for much better.",
+    "author": "William",
+    "date": "7/26/2026",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Excellent headset",
+    "text": "This is an excellent headset, sound quality very well and base very strong, noise cancellation also outstanding. No complaint and strongly recommended with this price.",
+    "author": "ray",
+    "date": "3/29/2026",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Sounds great",
+    "text": "Very good sound quality and fits very well. Easy to set and very light weight and no noise at all. Good battery life so far!",
+    "author": "Rony",
+    "date": "4/2/2026",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Highly recommended",
+    "text": "Got this for my daughter’s zoom class, and music time, she said the sound is pretty good, Easy to set up everything.",
+    "author": "Qiubo",
+    "date": "3/29/2026",
+    "verified": true
+   }
+  ],
+  "similar": [
+   {
+    "title": "Hybrid Active Noise Cancelling Bluetooth Headphones, Over Ear Wireless Headphones with 120H Playtime, Hi-Res Audio, Deep Bass, Memory Foam Ear Cups for Home Office Travel Black",
+    "price": "$24.99",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-Bluetooth-Headphones-Ear-Wireless-Headphones-120H-Playtime-Hi-Res-Audio-Deep-Bass-Memory-Foam-Ear-Cups-Home-Office-Tra_971fbc7e-54a3-43d4-897b-23ad881812a1.6a31e404c966ec8b3e604c226ac5bb3f.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Hybrid Active Noise Cancelling Headphones Wireless Bluetooth Over Ear - 50dB ANC, 120H Playback, 6-MIC ENC Clear Calls, Hi-Res 360° Spatial Audio, Foldable Comfort for Travel Office",
+    "price": "$39.79",
+    "image": "https://i5.walmartimages.com/seo/ybrid-Active-Noise-Cancelling-Headphones-Wireless-Bluetooth-Ear-50dB-ANC-120H-Playback-6-MIC-ENC-Clear-Calls-Hi-Res-360-Spatial-Audio-Foldable-Comfor_7d320cd6-f8f2-4832-9ad1-79ed0f93b8cc.d98752bb32bdc2e0b94df1c2f1758540.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Hybrid Active Noise Cancelling -45dB, Bluetooth Headphones 5.4, 50H Playtime Earbuds, Clear Call with 4 Mics, Bass Boosted by 90%, Comfort Fit Over Ear Headphones for Travel Home Office PC Black",
+    "price": "$24.39",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-45dB-Bluetooth-Headphones-5-4-50H-Playtime-Earbuds-Clear-Call-4-Mics-Bass-Boosted-90-Comfort-Fit-Ear-Headphones-Travel_6af20eef-5b46-496a-b292-6e31cddfca54.068e529934dd8288c138dbbb5c0bf1e9.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Active Noise Cancelling Headphones, -45dB Bluetooth Headphones 5.4, 50H Playtime Earbuds, Bass Boosted by 90%, Clear Call with 4 Mics, Comfort Fit Over Ear Headphones for Travel Home Office PC Black",
+    "price": "$24.29",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-45dB-Bluetooth-Headphones-5-4-50H-Playtime-Earbuds-Bass-Boosted-90-Clear-Call-4-Mics-Comfort-Fit-Ear-Headphones-Travel_040fa397-851d-4b03-926d-480d7164d093.3ab5629ea7ce0859cc4e9f86523e5111.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Bluetooth Headphones Over Ear, 58Hrs Playtime Wireless Headphones,Bass Boosted by 90%,Lightweight Headset with Deep Bass, Clear Call with 4 Noise Cancelling Mics,Low Latency for Travel Work Cellphone",
+    "price": "$21.89",
+    "image": "https://i5.walmartimages.com/seo/Bluetooth-Headphones-Ear-58Hrs-Playtime-Wireless-Headphones-Bass-Boosted-90-Lightweight-Headset-Deep-Bass-Clear-Call-4-Noise-Cancelling-Mics-Low-Late_6bd014bd-f432-4bec-b2c3-eb691b3e27a0.2e06f46364b4b7495eb201e21453bd6a.png?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Wireless Bluetooth Headphones 5.4, 40H Playtime with 3 EQ Modes, 4 Micrs ENC Noise Cancelling for Clear Calls, Bass Boosted by 85%, Comfort Fit, Over Ear Headphones for Travel Home Office PC Black",
+    "price": "$19.29",
+    "image": "https://i5.walmartimages.com/seo/Wireless-Bluetooth-Headphones-5-4-40H-Playtime-3-EQ-Modes-4-Micrs-ENC-Noise-Cancelling-Clear-Calls-Bass-Boosted-85-Comfort-Fit-Ear-Headphones-Travel_c3c4f269-2f1d-4a2b-8fca-5d58f591c418.4b3f7988441c194b6a04585a172796ce.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   }
+  ]
+ },
+ "wireless-5-4-19-29": {
+  "title": "Wireless Bluetooth Headphones 5.4, 40H Playtime with 3 EQ Modes, 4 Mics ENC Noise Cancelling for Clear Calls, Bass Boosted by 85%, Comfort Fit, Over Ear Headphones for Travel Home Office PC Black",
+  "priceDollars": "19",
+  "priceCents": "29",
+  "priceWas": "159.99",
+  "rating": 4.2,
+  "ratingCount": 1630,
+  "brand": "IKT",
+  "seller": "IKT-US",
+  "badges": [
+   "In 50+ people's carts",
+   "Deal",
+   "Overall pick"
+  ],
+  "colors": [
+   {
+    "name": "Black"
+   }
+  ],
+  "gallery": [
+   "https://i5.walmartimages.com/seo/Wireless-Bluetooth-Headphones-5-4-40H-Playtime-3-EQ-Modes-4-Micrs-ENC-Noise-Cancelling-Clear-Calls-Bass-Boosted-85-Comfort-Fit-Ear-Headphones-Travel_c3c4f269-2f1d-4a2b-8fca-5d58f591c418.4b3f7988441c194b6a04585a172796ce.jpeg",
+   "https://i5.walmartimages.com/asr/530ae159-8461-4e43-b166-bf36a2bc0837.ec700aa37335eef635f81f1003697d50.jpeg",
+   "https://i5.walmartimages.com/asr/641bb0be-25e5-4446-a20f-174518385629.5e30364728a7a9633f6e4fb810937de8.jpeg",
+   "https://i5.walmartimages.com/asr/eb4b7adb-3689-41ee-b557-c23dd895fe54.06727cd7fa76e8b069aa35ff04fcc503.jpeg",
+   "https://i5.walmartimages.com/asr/e81cb6ad-f94a-4b47-a10a-f3c9033d58bf.0112ec51d5a7dcacf32b1142e53cbea5.jpeg",
+   "https://i5.walmartimages.com/asr/3a7ec0d0-469b-4c0b-abea-d1361311c9a3.0c57d29bdcc1a44a8a28699f1cb825fb.jpeg"
+  ],
+  "videos": [],
+  "keyFeatures": [
+   "Battery life: 40 h",
+   "Headphone style: Over-Ear",
+   "Noise control technology: Sound Isolation",
+   "Wireless: Y",
+   "Brand: IKT",
+   "Ip code: IPX7",
+   "Assembled product weight: 0.34 lb",
+   "Color: Black",
+   "Inputs/Outputs: 3.5mm audio jack",
+   "Power type: Battery"
+  ],
+  "about": [
+   "【EQ Mode and Listen Attentively】The bluetooth headphones' EQ button allows free switching between the 3 preset EQ settings, and pressing the equalizer button switches between pop mode, bass mode, and vocal mode. To meet the listening requirements of different music styles.",
+   "【High-fidelity Sound Quality and High-resolution Audio】These noise cancelling headphones feature oversized 40mm dynamic drivers with highly flexible silk diaphragms that reproduce punchy bass (up to 85% boost) and clear treble (up to 20kHz). 24bit audio resolution produces detailed sound and punchy rhythms, presenting more sonic details that will add color to your favorite tracks.",
+   "【Superior Clear ENC Call Noise Cancellation】The JH-820 headphones wireless noise cancelling is equipped with 4 beamforming mics and advanced audio signal processing. The precise voice pickup technology picks up voice accurately and clearly. With ENC technology, it effectively separates your voice from surrounding sounds, making communication clearer, even in noisy environments.",
+   "【40 Hrs Playtime】Featuring low-power technology, the JH-820 wireless headphones bluetooth have a built-in 400mAh battery that allows up to 40 hours of playtime on a single charge, and with a quick charge time of only about 1.5 hours, these bluetooth wireless headphones are perfect for long distance traveling, sports and relaxation. Equipped with a 3.5mm audio jack, the bluetooth headset can be easily switched to wired mode when switched off. Music can be played through the AUX cable even when the battery is depleted.",
+   "【Widely Compatible and Smart One-two】Headphones wireless supports iOS, Android and Windows. Adopts advanced Bluetooth 5.4 technology with 2x faster connection speed and signal stability compared to Bluetooth 5.3. With memory function, just turn on the wireless headphones to connect automatically next time you use it. Two smart devices can connect to the JH-820 over ear headphones at the same time, allowing you to answer your phone calls without switching while watching a movie on your tablet!",
+   "【Comfortable Fit Stylish and Lightweight】The over ear headset is made of high quality materials and the headphones noise cancelling weighs only 0.34 lbs. The lightweight headphones fit your head perfectly, and the adjustable headband design allows the headphones to fit 99% of head shapes perfectly. The soft memory protein ear cups mimic the texture of your ear's skin to protect your ears during long term use. The design and comfort of these over ear bluetooth headphones complement each other, making them ideal for music lovers.",
+   "【Individually Convenient Button Controls】Control your music with the JH-820 headphones' intuitive buttons. With a single press, you can play/pause music, switch songs, volume+/-, answer/hang up calls and activate the voice assistant. Reduces false-touch operations.",
+   "【Stylish Gifts and Quality Customer Service】This bluetooth over ear headphones has a fashionable design and rich and practical functions to make your daily life more convenient. Perfect gift for birthdays, anniversaries and special occasions. Package includes foldable over ear headphones wireless, 3.5mm spare audio cable, USB charging cable and user manual. We offer 30 days return and 12 months warranty. We encourage you to contact us with any product questions or suggestions."
+  ],
+  "specs": [
+   {
+    "name": "Battery life",
+    "value": "40 h"
+   },
+   {
+    "name": "Headphone style",
+    "value": "Over-Ear"
+   },
+   {
+    "name": "Noise control technology",
+    "value": "Sound Isolation"
+   },
+   {
+    "name": "Wireless",
+    "value": "Y"
+   },
+   {
+    "name": "Wireless technology",
+    "value": "Bluetooth, None"
+   },
+   {
+    "name": "Features",
+    "value": "Built-in Microphone, Voice-Activated, Foldable"
+   },
+   {
+    "name": "Brand",
+    "value": "IKT"
+   },
+   {
+    "name": "Rec. use",
+    "value": "Casual Listening, Classroom, Sports"
+   },
+   {
+    "name": "Works with",
+    "value": "Android System, IOS System, Windows System"
+   },
+   {
+    "name": "Ip code",
+    "value": "IPX7"
+   },
+   {
+    "name": "Assembled product weight",
+    "value": "0.34 lb"
+   },
+   {
+    "name": "Color",
+    "value": "Black"
+   },
+   {
+    "name": "Inputs/Outputs",
+    "value": "3.5mm audio jack"
+   },
+   {
+    "name": "Accessories",
+    "value": "Foldable headphones*1, USB-C charging cable*1, 3.5mm audio cable*1, User manual*1"
+   },
+   {
+    "name": "Battery consumption type",
+    "value": "Integrated Rechargeable Battery"
+   },
+   {
+    "name": "Power type",
+    "value": "Battery"
+   },
+   {
+    "name": "Maximum transmission range",
+    "value": "33 ft"
+   },
+   {
+    "name": "Compatible smart control systems",
+    "value": "Google Assistant, Siri"
+   },
+   {
+    "name": "Ear pad material",
+    "value": "Leather"
+   },
+   {
+    "name": "Cord length",
+    "value": "1 in"
+   },
+   {
+    "name": "Generation",
+    "value": "1st Generation"
+   },
+   {
+    "name": "Material",
+    "value": "Plastic, Leather"
+   },
+   {
+    "name": "Video game platform",
+    "value": "PC"
+   },
+   {
+    "name": "Headphone type",
+    "value": "Headphones"
+   },
+   {
+    "name": "Model name",
+    "value": "JH-820"
+   }
+  ],
+  "fulfillment": [
+   "Shipping, arrives by tomorrow to San Jose, 95129",
+   "Pickup not available at a nearby store"
+  ],
+  "returns": "Free Holiday returns until Jan 31",
+  "reviewSummary": {
+   "average": 4.2,
+   "total": 1630,
+   "histogram": {
+    "1": 166,
+    "2": 73,
+    "3": 100,
+    "4": 205,
+    "5": 1086
+   },
+   "positive": [
+    "Comfortable over-ear fit",
+    "Crystal clear sound",
+    "Affordable price",
+    "Easy to use"
+   ],
+   "negative": []
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "title": "Lightweight/ Sweat proof Exercise Headphones",
+    "text": "I genuinely was surprised when I got these headphones because I thought the look of them was so cheap but after using them for three weeks, I am excited to share them. They are so comfortable. Great sound noise cancel, I don't really know much about a range, but it works well with my phone. It has a soft inner ear cushion and holds charge very well for the price. You can't beat it just in case if you need something to walk with or go to the gym that's not $100.",
+    "author": "Jenn",
+    "date": "6/16/2026",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Will buy again",
+    "text": "Clear sound and great to use for phone calls!!! Definitely worth the $18. It is super comfortable and you can definitely workout with them one.",
+    "author": "anonymous",
+    "date": "8/12/2026",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Good Sounding Bluetooth Headset",
+    "text": "This Wireless Bluetooth Headset works well. It has a strong base sound and I like it. Easy to use. Now I can enjoy listening to music.",
+    "author": "anonymous",
+    "date": "6/28/2026",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Headphones",
+    "text": "I was skeptical at first but these headphones are so good. The sound is so clear and when you call someone they are able to hear you clearly and they can even hear what's in the background! They have a couple modes like vocal mode and bass mode and the bass is amazing. They have adjustable pieces. They have styrofoam muffs and the top of the headphones are padded and are so so comfortable. Paying $20 was so worth it on these, the headphones aren't too bulky, and they were very easy to connect to my phone. They also have a volume button and power button along with the mode changer button.",
+    "author": "anonymous",
+    "date": "5/26/2026",
+    "verified": true
+   }
+  ],
+  "similar": [
+   {
+    "title": "Hybrid Active Noise Cancelling Headphones -45dB, Bluetooth Headphones 5.4, Bass Boosted by 90%, 50H Playtime, ENC Clear Call, Comfort Fit Over Ear Wireless Headphone for Travel Office PC Pure Black",
+    "price": "$26.79",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-Headphones-45dB-Bluetooth-Headphones-5-4-Bass-Boosted-90-50H-Playtime-ENC-Clear-Call-Comfort-Fit-Ear-Wireless-Headphon_36515822-e6fb-4266-8845-c3a955f6f5df.d65dfebeb8d8bec416d044837e702fc5.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Wireless Headphone Bluetooth 5.4, 40H Playtime with 3EQ Modes, Bass Boosted 85%, Bluetooth Headphone Over Ear Wireless/Wired, ENC Clear Call, Foldable Over Ear Headphone for Travel/Office/PC Black",
+    "price": "$19.59",
+    "image": "https://i5.walmartimages.com/seo/Wireless-Headphone-Bluetooth-5-4-40H-Playtime-3EQ-Modes-Bass-Boosted-85-Bluetooth-Headphone-Ear-Wireless-Wired-ENC-Clear-Call-Foldable-Ear-Headphone_11bd6775-2242-4ff9-81ad-f07f2e2740ee.cb649ef05340223e96beb37037df98d0.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Active Noise Cancelling Headphones -45dB, Bluetooth Headphones 5.4, 60H Playtime Wireless Earbuds, Clear Call, Bass Boosted by 90%, Comfort Fit Over Ear Headphones for Travel Home Office PC Black",
+    "price": "$24.99",
+    "image": "https://i5.walmartimages.com/seo/Active-Noise-Cancelling-Headphones-45dB-Bluetooth-Headphones-5-4-50H-Playtime-Wireless-Headphones-Clear-Call-Bass-Boosted-90-Comfort-Fit-Ear-Headphon_fb592810-8c4a-4a53-aa03-90b0c2117246.462bb9ac2edc889db0dc0495850e1b1b.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Hybrid Active Noise Cancelling -45dB, Bluetooth Headphones 5.4, 50H Playtime, Clear Call with 4 Mics, Bass Boosted by 90%, Comfort Fit Over Ear Headphones for Travel Home Office PC Beige",
+    "price": "$24.39",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-45dB-Bluetooth-Headphones-5-4-50H-Playtime-Clear-Call-4-Mics-Bass-Boosted-90-Comfort-Fit-Ear-Headphones-Travel-Home-Of_23f0c25f-e5ab-43b0-848a-458e5c2aa1d2.a62892ec0543e5e34f6d06a48588f1fb.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Hybrid Active Noise Cancelling -45dB, Bluetooth Headphones 5.4, 50H Playtime Earbuds, Clear Call with 4 Mics, Bass Boosted by 90%, Comfort Fit Over Ear Headphones for Travel Home Office PC Purple",
+    "price": "$24.39",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-45dB-Bluetooth-Headphones-5-4-50H-Playtime-Earbuds-Clear-Call-4-Mics-Bass-Boosted-90-Comfort-Fit-Ear-Headphones-Travel_8b9f1b17-9771-46f4-bcd4-c6e727fc1811.b0e0739f42a80d111bd2f802a1c28ecd.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Active Noise Cancelling Headphones -45dB, Bluetooth Headphones 5.4, 60H Playtime Wireless Earbuds, Bass Boosted by 90%, ENC Clear Call, Over Ear Headphone for Travel Home Office PC Soot Black",
+    "price": "$25.79",
+    "image": "https://i5.walmartimages.com/seo/Active-Noise-Cancelling-Headphones-45dB-Bluetooth-Headphones-5-4-60H-Playtime-Wireless-Earbuds-Bass-Boosted-90-ENC-Clear-Call-Ear-Headphone-Travel-Ho_7ceadea2-7d0a-4d10-855f-311b909c5611.7f51798f73aab5fed3523fcbe64b2a70.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   }
+  ]
+ },
+ "hybrid-53db-26-79": {
+  "title": "Hybrid Active Noise Cancelling Headphones -53dB, Bluetooth Headphones 5.4, 60H Playtime Wireless Earbuds, Bass Boosted by 90%, Clear Call, Comfort Fit Over Ear Headphones for Travel Home Office PC",
+  "priceDollars": "26",
+  "priceCents": "79",
+  "priceWas": "169.99",
+  "rating": 4.4,
+  "ratingCount": 751,
+  "brand": "IKT",
+  "seller": "IKT-US",
+  "badges": [
+   "Deal"
+  ],
+  "colors": [
+   {
+    "name": "Black"
+   },
+   {
+    "name": "Red"
+   }
+  ],
+  "gallery": [
+   "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-Headphones-45dB-Bluetooth-Headphones-5-4-60H-Playtime-Wireless-Headphones-Bass-Boosted-90-Clear-Call-Comfort-Fit-Ear-H_d20c6b34-385f-40dd-869f-9c78fd8fef5b.224a1f78a9405b52616a8d0754da706c.jpeg",
+   "https://i5.walmartimages.com/asr/55d2fbd6-11e1-429a-846d-e74666f4a8b2.393894b31112aa56931d69b30dd948c5.jpeg",
+   "https://i5.walmartimages.com/asr/2cbe654f-c379-448d-a0fa-078d618f4d50.8c8be821523eba4a6044de9d320ff88b.jpeg",
+   "https://i5.walmartimages.com/asr/f94b3849-bc76-43a3-b74a-dee1a4a3f26c.ef8e5f93b0d850a1be3736ce50508053.jpeg",
+   "https://i5.walmartimages.com/asr/6ff068b7-013f-4163-9962-a88000c30716.d56f3873c6378a0fbade2c93f99d2994.jpeg",
+   "https://i5.walmartimages.com/asr/dbfa01ec-27bb-4895-8ad2-6279262e60cb.8ba9fb21143b8a2f00dfbc1c6dd89094.jpeg"
+  ],
+  "videos": [
+   "https://i5-richmedia.walmartimages.com/asr-rm/9277ee37-c14d-48c9-8f14-579e7fc2f2ff_video_providername.mp4"
+  ],
+  "keyFeatures": [
+   "Battery life: 60 h",
+   "Headphone style: Over-Ear",
+   "Noise control technology: Hybrid Noise Cancellation",
+   "Wireless: Y",
+   "Features: Built-in Microphone, Foldable, Voice-Activated, Lightweight, Phone Control",
+   "Brand: IKT",
+   "Rec. use: Casual Listening, Classroom, Sports",
+   "Works with: Android System, IOS System, Windows System",
+   "Ip code: IPX7",
+   "Assembled product weight: 0.48 lb"
+  ],
+  "about": [
+   "【-53dB Hybrid Active Noise Cancellation】Our engineers have optimized the 4 built-in ANC micrs and digital active noise cancellation algorithm in the headphones wireless bluetooth. They can capture and filter up to 90% of low-frequency and mid-frequency environmental noise, such as airplane and car engines. The -53dB deep noise cancellation ensures you won't be disturbed, allowing you to focus on listening to music (Note: ANC mode does not support the AUX cable).",
+   "【High-fidelity Sound Quality & High-resolution Audio】These noise canceling headphones feature oversized 40mm dynamic drivers. The highly flexible silk diaphragm reproduces powerful bass (up to 90% boost) and clear treble (up to 20kHz). 24-bit audio resolution separates sound frequencies into crisp, bright highs, rich, full mids, and detailed, elastic lows. Experience more sonic detail.",
+   "【60 Hrs Long Playtime】The H03 wireless headphones bluetooth feature a built-in 500mAh battery, offering up to 40 hrs of music playtime in noise-canceling mode and extending playtime to 60 hrs in standard Bluetooth mode. Equipped with a 3.5mm audio cable, the headphones wireless noise cancelling can easily switch to wired mode when powered off. Even when the battery is depleted, music can still be played via the AUX cable. Enjoy uninterrupted playback during travel or commuting.",
+   "【Clear Hands-free Calling】This noise cancelling headphones bluetooth isn't just a boon for music lovers. It's also a game-changer for remote work and everyday calls. Featuring CVC 8.0 beamforming audio signal processing and advanced AI noise reduction algorithms, it effectively filters out distracting keyboard clatter, background chatter, and traffic noise. Precision voice pickup delivers exceptionally clear call experiences.",
+   "【Wide Compatibility & Smart One-two】Adopts advanced Bluetooth 5.4 technology. Compared to Bluetooth 5.3, with 2X faster connection speed and signal stability, there is almost no screen delay, enjoy your videos and games. The bluetooth headphones over ear is compatible with iOS, Android and Windows. Two smart devices can connect to our H03 over ear headphones at the same time, allowing you to take calls from your phone while watching a movie on your tablet without having to switch!",
+   "【All-Day Comfort】Weighing just 220g, the headband incorporates a widened pressure-relief design. The ear cups feature an ergonomic oval full-coverage design paired with soft memory foam (slow rebound, high conformability, effectively dispersing pressure). They are soft against the skin and offer excellent breathability. The over ear wireless bluetooth headphones are also highly compatible with eyeglasses, with the ear cups accommodating temples comfortably. Perfect for long journeys and office use.",
+   "【Safe Transparency Mode】The transparency mode of the bluetooth headset will bring you a new concept of sound - music doesn't have to exist in a vacuum, it can breathe and interact with the world. By turning on the transparency mode, outside sounds can coexist with your music. You won't be cut off from the outside world and can talk to people accurately and easily.",
+   "【360° Spatial Surround Sound】The H03 over ear bluetooth headphones utilize multi-channel layered rendering and head-tracking technology.This creates a virtual spatial audio environment with width, height, and depth, enabling precise sound localization across multiple dimensions.The over ear headset detect even the slightest head movements in real-time, intelligently adjusting the soundstage direction to deliver an immersive, enveloping audio experience.",
+   "【Individually Convenient Button Controls】 Use the intuitive buttons on the H03 wireless headphones to control your music. You can easily access functions such as play/pause music, switch songs, volume +/-, answer/hang up calls and activate the voice assistant. Under bluetooth connection status, click the ANC button to freely switch between ANC mode, bluetooth mode and transparency mode.",
+   "【Stylish Gifts and Quality Customer Service】This wireless bluetooth noise canceling headphones has a fashionable design and rich and practical functions to make your daily life more convenient. Perfect gift for birthdays, anniversaries and special occasions. Package includes foldable over ear headphones wireless, 3.5mm spare audio cable, USB charging cable and user manual. We offer 30 days return and 12 months warranty. We encourage you to contact us with any product questions or suggestions."
+  ],
+  "specs": [
+   {
+    "name": "Battery life",
+    "value": "60 h"
+   },
+   {
+    "name": "Headphone style",
+    "value": "Over-Ear"
+   },
+   {
+    "name": "Noise control technology",
+    "value": "Hybrid Noise Cancellation"
+   },
+   {
+    "name": "Wireless",
+    "value": "Y"
+   },
+   {
+    "name": "Features",
+    "value": "Built-in Microphone, Foldable, Voice-Activated, Lightweight, Phone Control"
+   },
+   {
+    "name": "Brand",
+    "value": "IKT"
+   },
+   {
+    "name": "Rec. use",
+    "value": "Casual Listening, Classroom, Sports"
+   },
+   {
+    "name": "Works with",
+    "value": "Android System, IOS System, Windows System"
+   },
+   {
+    "name": "Ip code",
+    "value": "IPX7"
+   },
+   {
+    "name": "Assembled product weight",
+    "value": "0.48 lb"
+   },
+   {
+    "name": "Color",
+    "value": "Black"
+   },
+   {
+    "name": "Inputs/Outputs",
+    "value": "3.5 mm"
+   },
+   {
+    "name": "Accessories",
+    "value": "Foldable headphones*1, USB-C charging cable*1, 3.5mm audio cable*1, User manual*1"
+   },
+   {
+    "name": "Battery consumption type",
+    "value": "Integrated Rechargeable Battery"
+   },
+   {
+    "name": "Power type",
+    "value": "Battery"
+   },
+   {
+    "name": "Maximum transmission range",
+    "value": "33 ft"
+   },
+   {
+    "name": "Virtual assistant",
+    "value": "Siri voice assistant, Google Voice Assistant"
+   },
+   {
+    "name": "Ear pad material",
+    "value": "Plastic"
+   },
+   {
+    "name": "Cord length",
+    "value": "1 ft"
+   },
+   {
+    "name": "Generation",
+    "value": "1st Generation"
+   },
+   {
+    "name": "Video game platform",
+    "value": "PC"
+   },
+   {
+    "name": "Headphone type",
+    "value": "Headphones"
+   },
+   {
+    "name": "Model name",
+    "value": "H03"
+   }
+  ],
+  "fulfillment": [
+   "Shipping, arrives by Fri, Oct 30 to San Jose, 95129",
+   "Pickup not available at a nearby store"
+  ],
+  "returns": "Free Holiday returns until Jan 31",
+  "reviewSummary": {
+   "average": 4.4,
+   "total": 751,
+   "histogram": {
+    "1": 53,
+    "2": 26,
+    "3": 44,
+    "4": 111,
+    "5": 517
+   },
+   "positive": [
+    "Quick stable connectivity",
+    "Strong noise canceling",
+    "Rich, clear sound quality",
+    "Multi-day battery life",
+    "Great value for money",
+    "Soft earpads comfort"
+   ],
+   "negative": []
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "title": "Have made my life easier",
+    "text": "I love these headphones. I have a problem with separating noises. I think it is coming from age so I'm having a problem with earbuds and such. These headphones have really made my life much easier as I'm able to just focus on one thing at a time..",
+    "author": "Denise",
+    "date": "12/29/2025",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Terric regardless of price",
+    "text": "There were some interesting reviews down rating the sound quality of these phones. I could not disagree more strongly. I have, in my studio, a selection of phones from the $100 Sony wired studio standards to $400 audiophile units. I think these stand up quite well compared to those. What most of those phones don't have is a terrific Bluetooth system and really functional noise-canceling. The two modes of noise-canceling are excellent and turn these phones into a near-isolation chamber in noisy environments; like the passenger seat of your car. The noise-canceling is a generation or two beyond the Bose wired noise-canceling phones I have used for several years. Also, unlike the Bose phones, this headphone is lightweight and extremely comfortable.",
+    "author": "anonymous",
+    "date": "12/5/2025",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "title": "Great sound",
+    "text": "Great sounds. I use them taking a nap since they block out all sound while listening on low.",
+    "author": "Garry",
+    "date": "7/10/2026",
+    "verified": true
+   },
+   {
+    "rating": 5,
+    "text": "good quality for a. low prince",
+    "author": "jorge",
+    "date": "6/20/2026",
+    "verified": true
+   }
+  ],
+  "similar": [
+   {
+    "title": "Hybrid Active Noise Cancelling Bluetooth Headphones, Over Ear Wireless Headphones with 120H Playtime, Hi-Res Audio, Deep Bass, Memory Foam Ear Cups for Home Office Travel Black",
+    "price": "$24.99",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-Bluetooth-Headphones-Ear-Wireless-Headphones-120H-Playtime-Hi-Res-Audio-Deep-Bass-Memory-Foam-Ear-Cups-Home-Office-Tra_971fbc7e-54a3-43d4-897b-23ad881812a1.6a31e404c966ec8b3e604c226ac5bb3f.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Hybrid Active Noise Cancelling Headphones -45dB, Bluetooth Headphones 5.4, Bass Boosted by 90%, 50H Playtime, ENC Clear Call, Comfort Fit Over Ear Wireless Headphone for Travel Office PC Pure Black",
+    "price": "$26.79",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-Headphones-45dB-Bluetooth-Headphones-5-4-Bass-Boosted-90-50H-Playtime-ENC-Clear-Call-Comfort-Fit-Ear-Wireless-Headphon_36515822-e6fb-4266-8845-c3a955f6f5df.d65dfebeb8d8bec416d044837e702fc5.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Hybrid Active Noise Cancelling -45dB, Bluetooth Headphones 5.4, 50H Playtime Earbuds, Clear Call with 4 Mics, Bass Boosted by 90%, Comfort Fit Over Ear Headphones for Travel Home Office PC Black",
+    "price": "$24.39",
+    "image": "https://i5.walmartimages.com/seo/Hybrid-Active-Noise-Cancelling-45dB-Bluetooth-Headphones-5-4-50H-Playtime-Earbuds-Clear-Call-4-Mics-Bass-Boosted-90-Comfort-Fit-Ear-Headphones-Travel_6af20eef-5b46-496a-b292-6e31cddfca54.068e529934dd8288c138dbbb5c0bf1e9.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Hybrid Active Noise Cancelling Headphones Wireless Bluetooth Over Ear - 50dB ANC, 120H Playback, 6-MIC ENC Clear Calls, Hi-Res 360° Spatial Audio, Foldable Comfort for Travel Office",
+    "price": "$39.79",
+    "image": "https://i5.walmartimages.com/seo/ybrid-Active-Noise-Cancelling-Headphones-Wireless-Bluetooth-Ear-50dB-ANC-120H-Playback-6-MIC-ENC-Clear-Calls-Hi-Res-360-Spatial-Audio-Foldable-Comfor_7d320cd6-f8f2-4832-9ad1-79ed0f93b8cc.d98752bb32bdc2e0b94df1c2f1758540.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Active Noise Cancelling Headphones -45dB, Bluetooth Headphones 5.4, 60H Playtime Wireless Earbuds, Bass Boosted by 90%, ENC Clear Call, Over Ear Headphone for Travel Home Office PC Soot Black",
+    "price": "$25.79",
+    "image": "https://i5.walmartimages.com/seo/Active-Noise-Cancelling-Headphones-45dB-Bluetooth-Headphones-5-4-60H-Playtime-Wireless-Earbuds-Bass-Boosted-90-ENC-Clear-Call-Ear-Headphone-Travel-Ho_7ceadea2-7d0a-4d10-855f-311b909c5611.7f51798f73aab5fed3523fcbe64b2a70.jpeg?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   },
+   {
+    "title": "Bluetooth Headphones Over Ear, 58Hrs Playtime Wireless Headphones,Bass Boosted by 90%,Lightweight Headset with Deep Bass, Clear Call with 4 Noise Cancelling Mics,Low Latency for Travel Work Cellphone",
+    "price": "$21.89",
+    "image": "https://i5.walmartimages.com/seo/Bluetooth-Headphones-Ear-58Hrs-Playtime-Wireless-Headphones-Bass-Boosted-90-Lightweight-Headset-Deep-Bass-Clear-Call-4-Noise-Cancelling-Mics-Low-Late_6bd014bd-f432-4bec-b2c3-eb691b3e27a0.2e06f46364b4b7495eb201e21453bd6a.png?odnHeight=576&odnWidth=576&odnBg=FFFFFF"
+   }
+  ]
  }
 };
 

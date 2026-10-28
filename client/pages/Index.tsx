@@ -9,7 +9,6 @@ import CategoryShortcuts from "@/components/walmart/CategoryShortcuts";
 import PLPResultsHeader from "@/components/walmart/PLPResultsHeader";
 import PLPProductCard from "@/components/walmart/PLPProductCard";
 import PLPVideoCard from "@/components/walmart/PLPVideoCard";
-import PLPStarsCarousel from "@/components/walmart/PLPStarsCarousel";
 import SparkyPLPCard from "@/components/walmart/SparkyPLPCard";
 import SparkyPLPSheet from "@/components/walmart/SparkyPLPSheet";
 import BottomNav from "@/components/walmart/BottomNav";
@@ -27,16 +26,10 @@ const item = (id: string): WalmartItem => {
 
 const BRAND_ITEMS = [item("bt-over-ear-65hr"), item("anc-45db-black")];
 const VIDEO_ITEM = item("hybrid-anc-headphones");
-const STARS_ITEMS = [
-  item("deal-45db-25-79"),
-  item("wireless-5-4-19-29"),
-  item("hybrid-53db-26-79"),
-];
 
 type Row =
   | { kind: "card"; item: WalmartItem }
   | { kind: "video" }
-  | { kind: "stars" }
   | { kind: "sparky" };
 
 const card = (id: string): Row => ({ kind: "card", item: item(id) });
@@ -46,7 +39,6 @@ const ROWS: Row[] = [
   card("anc-45db-black"),
   { kind: "video" },
   card("airpods-4"),
-  { kind: "stars" },
   card("deal-40h-black"),
   card("beats-studio-pro"),
   { kind: "sparky" },
@@ -58,6 +50,11 @@ const ROWS: Row[] = [
 
 export default function Index() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [nested, setNested] = useState<{
+    items: WalmartItem[];
+    startIndex: number;
+    key: number;
+  } | null>(null);
   const [concept, setConcept] = useState<NavConcept>(1);
   const [sparkyVisible, setSparkyVisible] = useState(false);
   const [sparkyDismissed, setSparkyDismissed] = useState(false);
@@ -82,6 +79,21 @@ export default function Index() {
     const rootRect = root.getBoundingClientRect();
     const r = el.getBoundingClientRect();
     root.scrollTop += r.top - rootRect.top - (root.clientHeight - r.height) / 2;
+  };
+
+  const closeNested = (selectedIndex: number) => {
+    const id = nested?.items[selectedIndex]?.id;
+    const card = document.querySelector<HTMLElement>('[data-fluid-active="true"]');
+    const tile = id
+      ? card?.querySelector<HTMLElement>(`[data-plp-id="${id}"]`)
+      : null;
+    const scroller = tile?.closest<HTMLElement>("[data-plp-hscroll]");
+    if (tile && scroller) {
+      const s = scroller.getBoundingClientRect();
+      const r = tile.getBoundingClientRect();
+      scroller.scrollLeft += r.left - s.left - (s.width - r.width) / 2;
+    }
+    setNested(null);
   };
 
   const closeModal = (selectedIndex: number) => {
@@ -147,9 +159,6 @@ export default function Index() {
                         />
                       </div>
                     )}
-                    {row.kind === "stars" && (
-                      <PLPStarsCarousel items={STARS_ITEMS} onSelect={open} />
-                    )}
                     {row.kind === "sparky" && (
                       <SparkyPLPCard ref={sparkyCardRef} />
                     )}
@@ -177,6 +186,24 @@ export default function Index() {
                 items={PLP_ORDER}
                 startIndex={openIndex}
                 onClose={closeModal}
+                onOpenCarousel={(items, startIndex) =>
+                  setNested({ items, startIndex, key: Date.now() })
+                }
+                presentation={concept === 4 ? "sheet" : "modal"}
+                bottomIndicator={
+                  concept === 2 ? "dock" : concept === 3 ? "dots" : "none"
+                }
+              />
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {nested && (
+              <ItemPageModal
+                key={nested.key}
+                items={nested.items}
+                startIndex={nested.startIndex}
+                onClose={closeNested}
                 presentation={concept === 4 ? "sheet" : "modal"}
                 bottomIndicator={
                   concept === 2 ? "dock" : concept === 3 ? "dots" : "none"
