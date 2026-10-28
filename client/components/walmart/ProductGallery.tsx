@@ -239,7 +239,7 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
         {slides.map((slide, i) => (
           <div
             key={i}
-            className={`relative w-full flex-shrink-0 snap-center overflow-hidden ${emphasizeVideo && slide.kind === "video" ? "h-[min(58vh,500px)]" : "aspect-square rounded-2xl"}`}
+            className={`relative w-full flex-shrink-0 snap-center overflow-hidden ${emphasizeVideo && slide.kind === "video" ? "h-[min(58vh,500px)]" : "aspect-[5/4] rounded-2xl"}`}
           >
             {slide.kind === "photo" && (
               <>

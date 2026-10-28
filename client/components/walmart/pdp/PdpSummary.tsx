@@ -48,7 +48,7 @@ export default function PdpSummary({
   const selected = swatches[Math.min(color, swatches.length - 1)];
 
   return (
-    <section className="flex flex-col gap-3 px-4 pb-4 pt-3">
+    <section className="flex flex-col gap-2 px-4 pb-4 pt-2">
       {badges.length > 0 && (
         <div className="flex flex-nowrap gap-2 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {badges.slice(0, 3).map((b) => (
@@ -82,7 +82,7 @@ export default function PdpSummary({
         </button>
       </div>
 
-      <h1 className="text-[15px] font-bold leading-[21px] text-ld-text-default">{item.title}</h1>
+      <h1 className="line-clamp-2 text-[15px] font-bold leading-[21px] text-ld-text-default">{item.title}</h1>
 
       {swatches.length > 1 && (
         <div className="flex flex-col gap-2">
@@ -98,16 +98,16 @@ export default function PdpSummary({
                 onClick={() => setColor(i)}
                 aria-label={c.name}
                 aria-pressed={i === color}
-                className={`flex w-[78px] shrink-0 flex-col items-center gap-1 rounded-md bg-white p-1.5 ${
+                className={`flex w-[68px] shrink-0 flex-col items-center gap-0.5 rounded-md bg-white p-1 ${
                   i === color ? "border-2 border-[#2E2F32]" : "border border-[#BABBBE]"
                 }`}
               >
                 {c.image ? (
-                  <img src={c.image} alt="" className="h-14 w-14 object-contain" />
+                  <img src={c.image} alt="" className="h-11 w-11 object-contain" />
                 ) : (
-                  <span className="flex h-14 w-14 items-center justify-center">
+                  <span className="flex h-11 w-11 items-center justify-center">
                     <span
-                      className="h-10 w-10 rounded-full border border-[#BABBBE]"
+                      className="h-8 w-8 rounded-full border border-[#BABBBE]"
                       style={{ backgroundColor: swatchHex(c.name) }}
                     />
                   </span>

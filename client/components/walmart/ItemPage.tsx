@@ -150,7 +150,7 @@ export default function ItemPage({
           {isSponsoredVideo ? (
             <section className="border-b border-[#E3E4E5] px-4 py-4">
               <p className="text-[12px] leading-4 text-[#74767C]">Sponsored</p>
-              <h1 className="mt-1 text-[15px] font-medium leading-5 text-ld-text-default">
+              <h1 className="mt-1 line-clamp-2 text-[15px] font-medium leading-5 text-ld-text-default">
                 {item.title}
               </h1>
               <p className="mt-2 text-[24px] font-bold leading-8 text-[#2A8703]">
