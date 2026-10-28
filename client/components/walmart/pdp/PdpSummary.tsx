@@ -35,13 +35,13 @@ export default function PdpSummary({
   item,
   content,
   onOpenReviews,
-  noVariantsExtra,
+  afterPrice,
   sponsored,
 }: {
   item: WalmartItem;
   content: PdpContent;
   onOpenReviews: () => void;
-  noVariantsExtra?: ReactNode;
+  afterPrice?: ReactNode;
   sponsored?: boolean;
 }) {
   const [color, setColor] = useState(0);
@@ -149,7 +149,7 @@ export default function PdpSummary({
         <p className="text-[12px] leading-4 text-[#74767C]">Price when purchased online</p>
       </div>
 
-      {swatches.length <= 1 && noVariantsExtra}
+      {afterPrice}
 
       {returns && (
         <div className="flex w-fit items-center gap-2 rounded-lg bg-[#DCE3F0] px-3 py-2 text-[13px] leading-4 text-ld-text-default">

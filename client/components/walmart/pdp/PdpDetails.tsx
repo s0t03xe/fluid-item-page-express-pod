@@ -111,21 +111,108 @@ export type TrtbData = {
 };
 
 const TRTB_BY_ITEM: Record<string, TrtbData> = {
+  "bt-over-ear-65hr": {
+    text: "Enjoy up to 65 hours of wireless playtime with deep, bass-boosted sound and a snug over-ear fit that stays comfortable through long listening sessions.",
+    features: [
+      { title: "65 Hours of Playtime", body: "A long-lasting battery keeps your music going for days between charges." },
+      { title: "Deep Bass, 40mm Drivers", body: "Large drivers deliver thumping bass and crisp highs." },
+      { title: "Bluetooth 5.4, Dual Connections", body: "Faster pairing, lower latency and a more stable connection across two devices." },
+    ],
+  },
   "anc-45db-black": {
     text: "Tune out airplane and engine noise with -45dB active noise cancellation, and keep listening for up to 50 hours on one charge. The foldable over-ear design packs away easily for travel, work and school.",
     features: [
-      {
-        title: "Active Noise Cancellation",
-        body: "Built-in and external mics filter up to 90% of low-frequency noise like airplane and car engines.",
-      },
-      {
-        title: "Up to 50 Hours of Playtime",
-        body: "Bluetooth 5.4 and a long-lasting battery keep your music going for days between charges.",
-      },
-      {
-        title: "Folds Up Small",
-        body: "Ear cups rotate and fold flat to fit easily into travel, work and school bags.",
-      },
+      { title: "Active Noise Cancellation", body: "Built-in and external mics filter up to 90% of low-frequency noise like airplane and car engines." },
+      { title: "Up to 50 Hours of Playtime", body: "Bluetooth 5.4 and a long-lasting battery keep your music going for days between charges." },
+      { title: "Folds Up Small", body: "Ear cups rotate and fold flat to fit easily into travel, work and school bags." },
+    ],
+  },
+  "hybrid-anc-headphones": {
+    text: "Stay focused with 50dB hybrid noise cancellation, up to 120 hours of playback and 6-mic clear calls, in a foldable over-ear design made for travel and the office.",
+    features: [
+      { title: "50dB Hybrid Noise Cancellation", body: "Blocks out engine hum and office chatter so you can concentrate." },
+      { title: "120 Hours of Playback", body: "Fast charging means a few minutes of charge gives hours of listening." },
+      { title: "6-Mic Clear Calls, Spatial Audio", body: "Six microphones reduce background noise on calls, with Hi-Res 360° spatial audio." },
+    ],
+  },
+  "airpods-4": {
+    text: "Redesigned for all-day comfort, with Personalized Spatial Audio, the Apple H2 chip and Voice Isolation for clearer calls, even in loud places.",
+    features: [
+      { title: "Rebuilt for Comfort", body: "A refined contour and shorter stem sit comfortably and securely all day." },
+      { title: "Personalized Spatial Audio", body: "Dynamic head tracking places sound all around you for music, TV and movies." },
+      { title: "Better Sound and Calls", body: "The H2 chip and Voice Isolation improve call quality in loud conditions." },
+    ],
+  },
+  "deal-45db-25-79": {
+    text: "-45dB active noise cancellation and up to 60 hours of playtime, with a bass-boosted sound and clear-call mics in a comfortable over-ear fit for travel and the office.",
+    features: [
+      { title: "-45dB Active Noise Cancellation", body: "Built-in and external mics filter up to 90% of low-frequency noise." },
+      { title: "60 Hours of Playtime", body: "Bluetooth 5.4 and a long-lasting battery for days of listening." },
+      { title: "Bass Boosted, Clear Calls", body: "Deep bass and ENC microphones for clear calls on the go." },
+    ],
+  },
+  "wireless-5-4-19-29": {
+    text: "40 hours of playtime, three EQ modes and four-mic ENC noise cancelling for clear calls, in a lightweight, comfortable over-ear fit that is easy on the wallet.",
+    features: [
+      { title: "40 Hours of Playtime", body: "Bluetooth 5.4 and a long-lasting battery keep you listening all week." },
+      { title: "3 EQ Modes, Bass Boosted", body: "Switch between sound profiles, with deep bass boosted by 85%." },
+      { title: "4-Mic ENC for Clear Calls", body: "Environmental noise cancelling microphones keep your voice clear." },
+    ],
+  },
+  "hybrid-53db-26-79": {
+    text: "Hybrid -53dB active noise cancellation with up to 60 hours of playtime and rich, clear sound, in soft over-ear cushions that stay comfortable for hours.",
+    features: [
+      { title: "-53dB Hybrid Noise Cancellation", body: "Strong noise canceling for flights, commutes and busy offices." },
+      { title: "60 Hours of Playtime", body: "Multi-day battery life with Bluetooth 5.4 for a quick, stable connection." },
+      { title: "Soft Earpads, Clear Sound", body: "Comfortable cushions and detailed, balanced audio." },
+    ],
+  },
+  "deal-40h-black": {
+    text: "Up to 40 hours of playtime with three EQ modes and bass boosted by 85%, in a comfortable Bluetooth 5.4 over-ear design.",
+    features: [
+      { title: "40 Hours of Playtime", body: "A long-lasting battery for work, travel and everyday listening." },
+      { title: "3 EQ Modes, Bass Boosted 85%", body: "Choose the sound profile that suits your music." },
+      { title: "Bluetooth 5.4 Over-Ear", body: "A fast, stable wireless connection in a comfortable over-ear fit." },
+    ],
+  },
+  "beats-studio-pro": {
+    text: "Beats' custom acoustic platform delivers rich, immersive sound, with adaptive noise cancelling, Transparency mode and up to 40 hours of battery life.",
+    features: [
+      { title: "Custom Acoustic Platform", body: "Rich, immersive sound for music and calls, with lossless audio over USB-C." },
+      { title: "Adaptive ANC and Transparency", body: "Block out the world or hear what you want with two listening modes." },
+      { title: "Works with Apple and Android", body: "One-touch pairing and native features for both ecosystems." },
+    ],
+  },
+  "airpods-pro-3": {
+    text: "Active Noise Cancellation that reduces up to 2x more unwanted noise than AirPods Pro 2, with heart rate sensing and Live Translation in a snug in-ear fit.",
+    features: [
+      { title: "Up to 2x More Noise Cancellation", body: "Active Noise Cancellation that outperforms AirPods Pro 2." },
+      { title: "Heart Rate Sensing", body: "Tracks heart rate and calories burned across up to 50 workout types." },
+      { title: "Live Translation and Seamless Switching", body: "Apple Intelligence features, plus automatic switching between your Apple devices." },
+    ],
+  },
+  "samsung-buds4-pro": {
+    text: "Hi-Res Audio with a 24-bit hi-fi codec and dual speakers in each earbud, plus advanced AI features and crystal clear call quality in a secure fit.",
+    features: [
+      { title: "Hi-Res Audio", body: "A 24-bit hi-fi codec brings out the detail and clarity in your music." },
+      { title: "Dual Speakers in Each Earbud", body: "A dedicated tweeter for rich highs and a woofer for powerful lows." },
+      { title: "Clear Calls, Simple Controls", body: "Crystal clear call quality with easy-to-use touch controls." },
+    ],
+  },
+  "skullcandy-hesh": {
+    text: "Active noise canceling in a wireless over-ear design from Skullcandy, built for comfortable, immersive listening at home, at work and on the move.",
+    features: [
+      { title: "Active Noise Canceling", body: "Tune out distractions and focus on what you are listening to." },
+      { title: "Wireless Over-Ear Comfort", body: "A cushioned over-ear fit that stays comfortable during long sessions." },
+      { title: "Skullcandy Sound", body: "Bold, balanced audio from a brand known for bass." },
+    ],
+  },
+  "onn-pink": {
+    text: "Simple, affordable on-ear headphones with a 3.5 mm wired connection, padded ear pads and an adjustable, foldable design in a fun pink colour.",
+    features: [
+      { title: "3.5 mm Wired Connection", body: "Plug in to tablets, computers, phones and more with a 3.94 ft cable." },
+      { title: "30 mm Dynamic Drivers", body: "Clear and balanced sound for music, video and classes." },
+      { title: "Padded, Foldable Design", body: "Comfortable ear pads and a snug adjustable fit that folds away." },
     ],
   },
 };

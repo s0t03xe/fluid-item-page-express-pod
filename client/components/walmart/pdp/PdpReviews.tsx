@@ -31,43 +31,6 @@ function ReviewCard({ r }: { r: PdpReview }) {
   );
 }
 
-export function ReviewHighlights({
-  content,
-  onOpenReviews,
-}: {
-  content: PdpContent;
-  onOpenReviews: () => void;
-}) {
-  const { positive, negative } = content.reviewSummary;
-  if (positive.length === 0 && negative.length === 0) return null;
-  return (
-    <div className="flex flex-col gap-2">
-      <button
-        type="button"
-        onClick={onOpenReviews}
-        className="flex w-fit items-center gap-1 text-[14px] font-bold leading-5 text-ld-text-default"
-      >
-        Customer review highlights
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-          <path d="m9 6 6 6-6 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {[...positive.map((t) => [t, true] as const), ...negative.map((t) => [t, false] as const)]
-          .slice(0, 6)
-          .map(([t, good]) => (
-            <span
-              key={t}
-              className="flex shrink-0 items-center gap-1 rounded-full border border-[#BABBBE] px-3 py-1.5 text-[13px] leading-4 text-ld-text-default"
-            >
-              <Check good={good} /> {t}
-            </span>
-          ))}
-      </div>
-    </div>
-  );
-}
-
 export function ReviewsSummary({
   item,
   content,

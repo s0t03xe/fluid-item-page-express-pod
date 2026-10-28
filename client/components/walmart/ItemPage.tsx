@@ -15,7 +15,6 @@ import {
 } from "@/components/walmart/pdp/PdpDetails";
 import {
   PdpReviewsSheet,
-  ReviewHighlights,
   ReviewsSummary,
 } from "@/components/walmart/pdp/PdpReviews";
 import {
@@ -149,25 +148,16 @@ export default function ItemPage({
               content={content}
               onOpenReviews={() => setSheet("reviews")}
               sponsored={isSponsoredVideo}
-              noVariantsExtra={
+              afterPrice={
                 <>
                   {trtb && <TopReasonToBuy data={trtb} content={content} />}
                   <SparkyChips onOpen={() => setSheet("sparky")} compact />
-                  {!trtb && (
-                    <ReviewHighlights
-                      content={content}
-                      onOpenReviews={() => setSheet("reviews")}
-                    />
-                  )}
                 </>
               }
             />
             <>
               <OnePayCard />
               <PdpFulfillment item={item} content={content} />
-              {hasAiSummary && hasVariants && (
-                <SparkyChips onOpen={() => setSheet("sparky")} />
-              )}
               <Divider />
               <KeyFeatures content={content} />
               <Specifications content={content} />
