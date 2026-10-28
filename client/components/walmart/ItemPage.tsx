@@ -176,12 +176,15 @@ export default function ItemPage({
               <RatedCarousel
                 item={item}
                 title="4 stars and above"
+                subtitle="Based on customer ratings and number of reviews"
                 items={STARS_ORDER}
                 onSelect={openStarsItem}
               />
               <RatedCarousel
                 item={item}
                 title="Popular items in this category"
+                subtitle="Best selling items that customers love"
+                variant="popular"
                 offset={2}
                 onSelect={openItem}
               />

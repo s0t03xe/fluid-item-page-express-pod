@@ -336,18 +336,22 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
           ))}
         </div>
       )}
-      <div className="absolute inset-y-0 right-4 flex items-center gap-4 text-ld-text-default">
+      <div className="absolute inset-y-0 right-4 flex items-center gap-2 text-ld-text-default">
         <button
           type="button"
           aria-label="Add to favorites"
           aria-pressed={liked}
           onClick={() => setLiked((v) => !v)}
-          className="flex h-6 w-6 items-center justify-center"
+          className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[#D5D7DB] bg-white shadow-sm"
         >
-          <Heart size={20} fill={liked ? "currentColor" : "none"} />
+          <Heart size={18} fill={liked ? "currentColor" : "none"} />
         </button>
-        <button type="button" aria-label="Share item" className="flex h-6 w-6 items-center justify-center">
-          <Share size={20} />
+        <button
+          type="button"
+          aria-label="Share item"
+          className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[#D5D7DB] bg-white shadow-sm"
+        >
+          <Share size={18} />
         </button>
       </div>
       </div>

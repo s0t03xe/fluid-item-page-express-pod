@@ -36,15 +36,24 @@ export function Chevron({ open, size = 20 }: { open: boolean; size?: number }) {
   );
 }
 
+/** Section heading used by the middle of the item page (How do you want, Key features, Reviews...). */
+export const SECTION_HEADING = "text-[20px] font-bold leading-7 text-ld-text-default";
+
 export function Collapsible({
   title,
   defaultOpen = false,
   aiLabel = false,
+  right,
+  headingClassName = "text-[16px] font-bold leading-6 text-ld-text-default",
   children,
 }: {
   title: string;
   defaultOpen?: boolean;
   aiLabel?: boolean;
+  /** Optional header content (e.g. a rating) rendered just before the chevron. */
+  right?: ReactNode;
+  /** Full class list for the title. Defaults to the 16px title used by the other PDP sections. */
+  headingClassName?: string;
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -54,10 +63,13 @@ export function Collapsible({
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between text-left"
+        className="flex w-full items-center justify-between gap-3 text-left"
       >
-        <h2 className="text-[16px] font-bold leading-6 text-ld-text-default">{title}</h2>
-        <Chevron open={open} />
+        <h2 className={headingClassName}>{title}</h2>
+        <span className="flex shrink-0 items-center gap-3">
+          {right}
+          <Chevron open={open} />
+        </span>
       </button>
       {open && <div className="mt-3">{children}</div>}
       {open && aiLabel && (
@@ -72,12 +84,14 @@ export function Collapsible({
 export const Divider = () => <div className="h-px w-full bg-[#E3E4E5]" />;
 
 export function Stars({ rating, size = 14 }: { rating: number; size?: number }) {
+  // Prod draws to the nearest half star (4.2 -> 4 stars, 4.4 -> 4.5).
+  const shown = Math.round(rating * 2) / 2;
   return (
     <div className="flex gap-px" role="img" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => {
-        const full = i + 1 <= Math.floor(rating);
-        const half = !full && i < rating;
-        const id = `pdp-star-${size}-${i}-${String(rating).replace(".", "_")}`;
+        const full = i + 1 <= Math.floor(shown);
+        const half = !full && i < shown;
+        const id = `pdp-star-${size}-${i}-${String(shown).replace(".", "_")}`;
         return (
           <svg key={i} width={size} height={size} viewBox="0 0 12 12" fill="none">
             {half && (

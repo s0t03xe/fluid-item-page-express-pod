@@ -1,8 +1,13 @@
 import { PLP_ORDER, type WalmartItem } from "@/lib/walmart-items";
 import type { PdpContent } from "@/lib/pdp-content";
-import PLPProductCard from "@/components/walmart/PLPProductCard";
-import PLPStarsCarousel from "@/components/walmart/PLPStarsCarousel";
-import { Collapsible, Stars } from "@/components/walmart/pdp/ui";
+import { Heart } from "@/components/walmart/icons";
+import { Fulfillment } from "@/components/walmart/PLPRating";
+import PLPStarsCarousel, {
+  TilePrice,
+  TileRating,
+  brandOf,
+} from "@/components/walmart/PLPStarsCarousel";
+import { Collapsible, Divider, Stars } from "@/components/walmart/pdp/ui";
 
 const others = (item: WalmartItem) =>
   PLP_ORDER.filter((i) => i.id !== item.id && !i.galleryVideoSrc);
@@ -16,10 +21,74 @@ export function SponsoredCard({
 }) {
   const pick = others(item).find((i) => i.sponsored);
   if (!pick) return null;
+  const brand = brandOf(pick);
   return (
-    <section className="px-4 py-2">
-      <div className="rounded-xl border border-walmart-gray-line px-3">
-        <PLPProductCard item={pick} onSelect={() => onSelect(pick)} />
+    <section className="pt-2">
+      <div className="px-4">
+        <div className="flex gap-5 rounded-2xl border border-[#E3E4E5] bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
+          <div className="relative w-[40%] shrink-0">
+            <button
+              type="button"
+              onClick={() => onSelect(pick)}
+              aria-label={pick.title}
+              className="block aspect-square w-full bg-white"
+            >
+              <img src={pick.image} alt="" className="h-full w-full object-contain" />
+            </button>
+            <button
+              type="button"
+              aria-label="Add to list"
+              onClick={(e) => e.stopPropagation()}
+              className="absolute right-0 top-0 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.2)]"
+            >
+              <Heart size={14} />
+            </button>
+          </div>
+          <div className="flex min-w-0 flex-1 flex-col">
+            <TilePrice item={pick} />
+            {pick.savings && (
+              <div className="mt-1.5 flex items-center gap-2">
+                <span className="rounded-[4px] bg-[#E3F4DA] px-2 py-0.5 text-[13px] leading-4 text-[#2A6B1A]">
+                  You save
+                </span>
+                <span className="text-[14px] font-bold leading-5 text-[#2A8703]">
+                  ${pick.savings}
+                </span>
+              </div>
+            )}
+            {brand && (
+              <p className="mt-1.5 text-[14px] font-bold leading-5 text-ld-text-default">{brand}</p>
+            )}
+            <button
+              type="button"
+              onClick={() => onSelect(pick)}
+              className="mt-1 line-clamp-3 block text-left text-[14px] leading-4 text-ld-text-default"
+            >
+              {pick.title}
+            </button>
+            <div className="mt-1.5">
+              <TileRating item={pick} />
+            </div>
+            <div className="mt-1.5">
+              {pick.shippingLines?.map((line) => (
+                <Fulfillment key={line} line={line} />
+              ))}
+            </div>
+            <div className="mt-auto pt-3">
+              <button
+                type="button"
+                onClick={() => onSelect(pick)}
+                className="flex h-9 w-full items-center justify-center rounded-full bg-walmart-blue text-[14px] font-bold text-white active:opacity-90"
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <p className="mt-2 text-right text-[13px] leading-4 text-[#74767C]">Sponsored</p>
+      </div>
+      <div className="mt-4">
+        <Divider />
       </div>
     </section>
   );
@@ -28,6 +97,8 @@ export function SponsoredCard({
 export function RatedCarousel({
   item,
   title,
+  subtitle,
+  variant,
   onSelect,
   minRating = 0,
   offset = 0,
@@ -35,6 +106,8 @@ export function RatedCarousel({
 }: {
   item: WalmartItem;
   title: string;
+  subtitle?: string;
+  variant?: "rated" | "popular";
   onSelect: (item: WalmartItem) => void;
   minRating?: number;
   offset?: number;
@@ -46,7 +119,15 @@ export function RatedCarousel({
         .filter((i) => i.rating >= minRating)
         .slice(offset, offset + 4);
   if (list.length === 0) return null;
-  return <PLPStarsCarousel items={list} title={title} onSelect={onSelect} />;
+  return (
+    <PLPStarsCarousel
+      items={list}
+      title={title}
+      subtitle={subtitle}
+      variant={variant}
+      onSelect={onSelect}
+    />
+  );
 }
 
 export function SimilarItems({ content }: { content: PdpContent }) {
