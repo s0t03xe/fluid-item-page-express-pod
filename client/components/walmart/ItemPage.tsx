@@ -3,7 +3,7 @@ import AddedToCartSheet from "@/components/walmart/AddedToCartSheet";
 import AskSparkySheet from "@/components/walmart/AskSparkySheet";
 import ProductGallery from "@/components/walmart/ProductGallery";
 import OnePayCard from "@/components/walmart/OnePayCard";
-import PdpSummary, { PdpHeadline } from "@/components/walmart/pdp/PdpSummary";
+import PdpSummary from "@/components/walmart/pdp/PdpSummary";
 import PdpFulfillment from "@/components/walmart/pdp/PdpFulfillment";
 import { KeyFeatures, QuickActions, SparkyChips, Specifications } from "@/components/walmart/pdp/PdpDetails";
 import { PdpReviewsSheet, ReviewsSummary } from "@/components/walmart/pdp/PdpReviews";
@@ -143,16 +143,28 @@ export default function ItemPage({
             onSwipePrevItem={onSwipePrevItem}
             onSwipeNextItem={onSwipeNextItem}
           />
+          {!isSponsoredVideo && hasAiSummary && <QuickActions />}
         </div>
 
         <div className="relative z-10 bg-white">
-          {isSponsoredVideo && (
-            <p className="px-4 pt-3 text-[12px] leading-4 text-[#74767C]">Sponsored</p>
-          )}
-          <PdpHeadline item={item} onOpenReviews={() => setSheet("reviews")} />
           <SparkyChips onOpen={() => setSheet("sparky")} />
-          {!isSponsoredVideo && hasAiSummary && <QuickActions />}
-          {!isSponsoredVideo && <PdpSummary item={item} content={content} />}
+          {isSponsoredVideo ? (
+            <section className="border-b border-[#E3E4E5] px-4 py-4">
+              <p className="text-[12px] leading-4 text-[#74767C]">Sponsored</p>
+              <h1 className="mt-1 text-[15px] font-medium leading-5 text-ld-text-default">
+                {item.title}
+              </h1>
+              <p className="mt-2 text-[24px] font-bold leading-8 text-[#2A8703]">
+                Now ${item.priceDollars}.{item.priceCents}
+              </p>
+            </section>
+          ) : (
+            <PdpSummary
+              item={item}
+              content={content}
+              onOpenReviews={() => setSheet("reviews")}
+            />
+          )}
           {isSponsoredVideo ? (
             <SponsoredItemDetails item={item} />
           ) : (

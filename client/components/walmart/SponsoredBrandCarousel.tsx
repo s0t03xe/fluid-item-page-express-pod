@@ -26,7 +26,6 @@ export default function SponsoredBrandCarousel({
           <h2 className="text-[16px] font-bold leading-5 text-ld-text-default">
             Sounds always twice the price
           </h2>
-          <span className="text-[13px] leading-4 text-[#74767C]">Sponsored by VEATOOL</span>
         </div>
       </div>
 
