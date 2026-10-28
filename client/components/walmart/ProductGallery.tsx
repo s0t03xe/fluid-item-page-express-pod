@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import VideoSlide from "./VideoSlide";
+import { Heart, Share } from "./icons";
 
 // Slide image URLs from Figma
 const HERO_IMG = "https://cdn.builder.io/api/v1/image/assets%2F02297b1ff48d4a2f8e4d9ed415c47ecf%2F79eeffa60ce145bea5091a2d24a456d9";
@@ -97,6 +98,7 @@ interface ProductGalleryProps {
 export default function ProductGallery(props: ProductGalleryProps = {}) {
   const { heroImage, images, videoSrc, videoPoster, emphasizeVideo, onSwipePrevItem, onSwipeNextItem, active: cardActive = true } = props;
   const [active, setActive] = useState(0);
+  const [liked, setLiked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchStartAtEdge = useRef<"start" | "end" | null>(null);
@@ -239,7 +241,7 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
         {slides.map((slide, i) => (
           <div
             key={i}
-            className={`relative w-full flex-shrink-0 snap-center overflow-hidden ${emphasizeVideo && slide.kind === "video" ? "h-[min(58vh,500px)]" : "aspect-[5/4] rounded-2xl"}`}
+            className={`relative w-full flex-shrink-0 snap-center overflow-hidden ${emphasizeVideo && slide.kind === "video" ? "h-[min(58vh,500px)]" : "aspect-square rounded-2xl"}`}
           >
             {slide.kind === "photo" && (
               <>
@@ -289,7 +291,8 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
         ))}
       </div>
 
-      {/* ── Pagination Dots ── */}
+      {/* ── Pagination Dots + favourite / share ── */}
+      <div className="relative">
       {totalSlides > 1 ? (
         <div className="flex items-center justify-center py-2">
           {Array.from({ length: totalSlides }).map((_, i) => {
@@ -329,6 +332,21 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
           ))}
         </div>
       )}
+      <div className="absolute inset-y-0 right-4 flex items-center gap-4 text-ld-text-default">
+        <button
+          type="button"
+          aria-label="Add to favorites"
+          aria-pressed={liked}
+          onClick={() => setLiked((v) => !v)}
+          className="flex h-6 w-6 items-center justify-center"
+        >
+          <Heart size={20} fill={liked ? "currentColor" : "none"} />
+        </button>
+        <button type="button" aria-label="Share item" className="flex h-6 w-6 items-center justify-center">
+          <Share size={20} />
+        </button>
+      </div>
+      </div>
     </div>
   );
 }

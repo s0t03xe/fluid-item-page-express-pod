@@ -77,7 +77,7 @@ export function Specifications({ content }: { content: PdpContent }) {
 
 export function QuickActions() {
   const chip =
-    "flex h-8 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-[#2E2F32] bg-white px-3 text-[14px] font-semibold leading-5 text-ld-text-default active:bg-walmart-gray-bg";
+    "flex h-8 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-[#BABBBE] bg-white px-3 text-[14px] font-normal leading-5 text-ld-text-default active:bg-walmart-gray-bg";
   const icon = { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none" } as const;
   const stroke = { stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round" } as const;
   return (

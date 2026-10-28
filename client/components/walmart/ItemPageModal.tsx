@@ -145,20 +145,6 @@ export default function ItemPageModal({
                       <ChevronDown size={20} />
                     </OverlayButton>
                   </div>
-                  <div className="pointer-events-auto flex gap-2">
-                    <OverlayButton
-                      aria-label="Add to favorites"
-                      active={likedMap[i]}
-                      onClick={() =>
-                        setLikedMap((m) => ({ ...m, [i]: !m[i] }))
-                      }
-                    >
-                      <Heart size={18} fill={likedMap[i] ? "currentColor" : "none"} />
-                    </OverlayButton>
-                    <OverlayButton aria-label="Share item">
-                      <Share size={18} />
-                    </OverlayButton>
-                  </div>
                 </div>
 
                 <ItemPage
