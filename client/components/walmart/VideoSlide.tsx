@@ -95,6 +95,7 @@ export default function VideoSlide({
   handle,
   isActive,
   fill,
+  showMoreVideos = true,
 }: {
   src: string;
   poster: string;
@@ -102,6 +103,7 @@ export default function VideoSlide({
   handle?: string;
   isActive: boolean;
   fill?: boolean;
+  showMoreVideos?: boolean;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(false);
@@ -173,9 +175,11 @@ export default function VideoSlide({
         <img src={poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
       )}
 
-      <div className="absolute right-3 top-3">
-        <MoreVideosPill />
-      </div>
+      {showMoreVideos && (
+        <div className="absolute right-3 top-3">
+          <MoreVideosPill />
+        </div>
+      )}
 
       {paused && (
         <button

@@ -270,6 +270,7 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
                 handle={slide.handle}
                 fill={slide.fill}
                 isActive={i === active}
+                showMoreVideos={!emphasizeVideo}
               />
             )}
           </div>
