@@ -163,6 +163,7 @@ export default function ItemPageModal({
 
                 <ItemPage
                   item={item}
+                  active={selected === i}
                   onAtTopChange={(atTop) =>
                     setAtTopMap((m) =>
                       m[i] === atTop ? m : { ...m, [i]: atTop },

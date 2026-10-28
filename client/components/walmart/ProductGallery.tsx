@@ -89,12 +89,13 @@ interface ProductGalleryProps {
   videoSrc?: string;
   videoPoster?: string;
   emphasizeVideo?: boolean;
+  active?: boolean;
   onSwipePrevItem?: () => void;
   onSwipeNextItem?: () => void;
 }
 
 export default function ProductGallery(props: ProductGalleryProps = {}) {
-  const { heroImage, images, videoSrc, videoPoster, emphasizeVideo, onSwipePrevItem, onSwipeNextItem } = props;
+  const { heroImage, images, videoSrc, videoPoster, emphasizeVideo, onSwipePrevItem, onSwipeNextItem, active: cardActive = true } = props;
   const [active, setActive] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
@@ -112,6 +113,13 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
       ? [{ kind: "photo", img: heroImage, badge: "Shop similar" }]
       : SLIDES;
   const totalSlides = slides.length;
+
+  // Whenever this card is not the front card, rewind to the first image.
+  useEffect(() => {
+    if (cardActive) return;
+    scrollRef.current?.scrollTo({ left: 0 });
+    setActive(0);
+  }, [cardActive]);
 
   // Sync active dot on scroll
   useEffect(() => {

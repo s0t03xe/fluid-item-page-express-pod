@@ -31,17 +31,68 @@ function savingsOf(item: WalmartItem) {
   return diff > 0 ? diff.toFixed(2) : undefined;
 }
 
-export default function PdpSummary({
+/** First-screen block under the image: name, price, ratings. */
+export function PdpHeadline({
   item,
-  content,
   onOpenReviews,
 }: {
   item: WalmartItem;
-  content: PdpContent;
   onOpenReviews: () => void;
 }) {
-  const [color, setColor] = useState(0);
+  const [expanded, setExpanded] = useState(false);
   const savings = savingsOf(item);
+
+  return (
+    <section className="flex flex-col gap-2 px-4 pb-1 pt-2">
+      <h1
+        onClick={() => setExpanded((e) => !e)}
+        className={`cursor-pointer text-[15px] font-normal leading-[21px] text-ld-text-default ${
+          expanded ? "" : "line-clamp-2"
+        }`}
+      >
+        {item.title}
+      </h1>
+
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <span className="flex items-start font-bold text-[#2A8703]">
+          <span className="mr-1 text-[18px] leading-7">{item.priceWas ? "Now" : ""}</span>
+          <span className="mt-0.5 text-[16px] leading-5">$</span>
+          <span className="text-[26px] leading-7">{item.priceDollars}</span>
+          <span className="mt-0.5 text-[15px] leading-5">{item.priceCents}</span>
+        </span>
+        {savings && (
+          <span className="rounded bg-[#E7F5E2] px-2 py-0.5 text-[12px] font-bold leading-5 text-[#2A8703]">
+            You save ${savings}
+          </span>
+        )}
+        {item.priceWas && (
+          <span className="text-[14px] leading-5 text-[#74767C] line-through">${item.priceWas}</span>
+        )}
+        <InfoIcon className="text-[#2E2F32]" />
+      </div>
+
+      <button
+        type="button"
+        onClick={onOpenReviews}
+        className="flex w-fit items-center gap-1 text-[13px] leading-5 text-ld-text-default"
+      >
+        <Stars rating={item.rating} />
+        <span>({item.rating})</span>
+        <span className="underline">{item.ratingCount}</span>
+      </button>
+    </section>
+  );
+}
+
+/** Everything else in the summary: badges, brand, colours, returns. */
+export default function PdpSummary({
+  item,
+  content,
+}: {
+  item: WalmartItem;
+  content: PdpContent;
+}) {
+  const [color, setColor] = useState(0);
   const badges = Array.from(new Set([item.badge, ...content.badges].filter((b): b is string => Boolean(b))));
   const returns = content.returns?.split(". ")[0]?.replace(/\.$/, "");
   const swatches = content.colors;
@@ -62,22 +113,9 @@ export default function PdpSummary({
         </div>
       )}
 
-      <div className="flex items-start justify-between gap-3">
-        <span className="text-[13px] leading-5 text-ld-text-default underline">
-          {content.brand ? `Visit the ${content.brand} store` : item.store}
-        </span>
-        <button
-          type="button"
-          onClick={onOpenReviews}
-          className="flex shrink-0 items-center gap-1 text-[13px] leading-5 text-ld-text-default"
-        >
-          <Stars rating={item.rating} />
-          <span>({item.rating})</span>
-          <span className="underline">{item.ratingCount}</span>
-        </button>
-      </div>
-
-      <h1 className="text-[15px] font-normal leading-[21px] text-ld-text-default">{item.title}</h1>
+      <span className="text-[13px] leading-5 text-ld-text-default underline">
+        {content.brand ? `Visit the ${content.brand} store` : item.store}
+      </span>
 
       {swatches.length > 1 && (
         <div className="flex flex-col gap-2">
@@ -117,26 +155,7 @@ export default function PdpSummary({
         </div>
       )}
 
-      <div className="flex flex-col gap-1.5">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span className="flex items-start font-bold text-[#2A8703]">
-            <span className="mr-1 text-[20px] leading-8">{item.priceWas ? "Now" : ""}</span>
-            <span className="mt-1 text-[18px] leading-6">$</span>
-            <span className="text-[28px] leading-8">{item.priceDollars}</span>
-            <span className="mt-1 text-[16px] leading-5">{item.priceCents}</span>
-          </span>
-          {savings && (
-            <span className="rounded bg-[#E7F5E2] px-2 py-0.5 text-[13px] font-bold leading-5 text-[#2A8703]">
-              You save ${savings}
-            </span>
-          )}
-          {item.priceWas && (
-            <span className="text-[14px] leading-5 text-[#74767C] line-through">${item.priceWas}</span>
-          )}
-          <InfoIcon className="text-[#2E2F32]" />
-        </div>
-        <p className="text-[12px] leading-4 text-[#74767C]">Price when purchased online</p>
-      </div>
+      <p className="text-[12px] leading-4 text-[#74767C]">Price when purchased online</p>
 
       {returns && (
         <div className="flex w-fit items-center gap-2 rounded-lg bg-[#DCE3F0] px-3 py-2 text-[13px] leading-4 text-ld-text-default">
