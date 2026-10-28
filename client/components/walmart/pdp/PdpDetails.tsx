@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { PdpContent } from "@/lib/pdp-content";
 import { Collapsible, SPARKY_IMG } from "@/components/walmart/pdp/ui";
 
@@ -100,6 +101,42 @@ export function QuickActions() {
         </svg>
         Shop similar
       </button>
+    </div>
+  );
+}
+
+const TRTB_BY_ITEM: Record<string, string> = {
+  "anc-45db-black":
+    "Tune out airplane and engine noise with -45dB active noise cancellation, and keep listening for up to 50 hours on one charge. The foldable over-ear design packs away easily for travel, work and school.",
+};
+
+export function topReasonToBuy(itemId: string) {
+  return TRTB_BY_ITEM[itemId];
+}
+
+const TRTB_PREVIEW_CHARS = 68;
+
+export function TopReasonToBuy({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const long = text.length > TRTB_PREVIEW_CHARS;
+  const shown = expanded || !long ? text : `${text.slice(0, TRTB_PREVIEW_CHARS).replace(/\s+\S*$/, "")}…`;
+  return (
+    <div className="flex items-start gap-2 rounded-xl border border-[#DAD6EE] bg-[#F1EFFA] px-3 py-2.5 text-[13px] leading-[18px] text-ld-text-default">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0" aria-hidden="true">
+        <path d="M10 3 11.8 8.2 17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3Zm8 9 .9 2.6L21.5 15.5l-2.6.9L18 19l-.9-2.6-2.6-.9 2.6-.9L18 12Z" fill="currentColor" />
+      </svg>
+      <p>
+        {shown}{" "}
+        {long && (
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="font-bold underline"
+          >
+            {expanded ? "View less" : "View more"}
+          </button>
+        )}
+      </p>
     </div>
   );
 }

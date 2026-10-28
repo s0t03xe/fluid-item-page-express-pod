@@ -10,6 +10,8 @@ import {
   QuickActions,
   SparkyChips,
   Specifications,
+  TopReasonToBuy,
+  topReasonToBuy,
 } from "@/components/walmart/pdp/PdpDetails";
 import {
   PdpReviewsSheet,
@@ -139,6 +141,9 @@ export default function ItemPage({
               onOpenReviews={() => setSheet("reviews")}
               noVariantsExtra={
                 <>
+                  {topReasonToBuy(item.id) && (
+                    <TopReasonToBuy text={topReasonToBuy(item.id)} />
+                  )}
                   <SparkyChips onOpen={() => setSheet("sparky")} compact />
                   <ReviewHighlights
                     content={content}
