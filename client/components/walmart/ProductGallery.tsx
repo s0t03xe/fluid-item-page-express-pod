@@ -87,12 +87,13 @@ interface ProductGalleryProps {
   heroImage?: string;
   videoSrc?: string;
   videoPoster?: string;
+  emphasizeVideo?: boolean;
   onSwipePrevItem?: () => void;
   onSwipeNextItem?: () => void;
 }
 
 export default function ProductGallery(props: ProductGalleryProps = {}) {
-  const { heroImage, videoSrc, videoPoster, onSwipePrevItem, onSwipeNextItem } = props;
+  const { heroImage, videoSrc, videoPoster, emphasizeVideo, onSwipePrevItem, onSwipeNextItem } = props;
   const [active, setActive] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
@@ -132,7 +133,12 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
     const el = scrollRef.current;
     if (!el) return;
     const target = el.children[i] as HTMLElement | undefined;
-    if (target) el.scrollTo({ left: target.offsetLeft - 16, behavior: "smooth" });
+    if (target) {
+      el.scrollTo({
+        left: target.offsetLeft - (emphasizeVideo ? 0 : 16),
+        behavior: "smooth",
+      });
+    }
   };
 
   const edgeAt = (clientX: number, rect: DOMRect): "start" | "end" | null => {
@@ -206,7 +212,7 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
   };
 
   return (
-    <div className="relative pt-2">
+    <div className={`relative ${emphasizeVideo ? "" : "pt-2"}`}>
       {/* ── Carousel ── */}
       <div
         ref={scrollRef}
@@ -217,12 +223,12 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onDragStart={(e) => e.preventDefault()}
-        className="flex snap-x snap-mandatory overflow-x-auto px-4 gap-4 cursor-grab select-none active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className={`flex snap-x snap-mandatory overflow-x-auto ${emphasizeVideo ? "gap-0 px-0" : "gap-4 px-4"} cursor-grab select-none active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden`}
       >
         {slides.map((slide, i) => (
           <div
             key={i}
-            className="relative aspect-square w-full flex-shrink-0 snap-center overflow-hidden rounded-2xl"
+            className={`relative w-full flex-shrink-0 snap-center overflow-hidden ${emphasizeVideo && slide.kind === "video" ? "h-[min(58vh,500px)]" : "aspect-square rounded-2xl"}`}
           >
             {slide.kind === "photo" && (
               <>

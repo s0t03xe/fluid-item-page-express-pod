@@ -24,6 +24,45 @@ import FeedbackBanner from "@/components/walmart/FeedbackBanner";
 import PurchaseBar from "@/components/walmart/PurchaseBar";
 import type { WalmartItem } from "@/lib/walmart-items";
 
+function SponsoredItemDetails({ item }: { item: WalmartItem }) {
+  const specifications = [
+    ["Noise cancellation", "Up to 50 dB ANC"],
+    ["Playback", "Up to 120 hours"],
+    ["Call clarity", "6-MIC ENC"],
+    ["Audio", "Hi-Res 360° spatial audio"],
+    ["Design", "Foldable over-ear headphones"],
+  ];
+
+  return (
+    <section className="flex flex-col gap-4 px-4 py-5" aria-label="Product details">
+      <div className="flex items-center justify-between border-b border-[#E3E4E5] pb-4">
+        <div>
+          <h2 className="text-[16px] font-bold leading-6 text-ld-text-default">Product details</h2>
+          <p className="mt-1 text-[14px] leading-5 text-[#74767C]">
+            {item.shippingLines?.[0] ?? "Shipping details available at checkout"}
+          </p>
+        </div>
+        <div className="shrink-0 text-right">
+          <p className="text-[16px] font-bold leading-6 text-ld-text-default">{item.rating} / 5</p>
+          <p className="text-[12px] leading-4 text-[#74767C]">{item.ratingCount} reviews</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-[14px] font-bold leading-5 text-ld-text-default">Key features</h3>
+        <dl className="mt-3 divide-y divide-[#E3E4E5]">
+          {specifications.map(([label, value]) => (
+            <div key={label} className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-3 py-3">
+              <dt className="text-[14px] leading-5 text-[#74767C]">{label}</dt>
+              <dd className="text-[14px] leading-5 text-ld-text-default">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 export default function ItemPage({
   item,
   onAtTopChange,
@@ -41,6 +80,7 @@ export default function ItemPage({
   const ticking = useRef(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [sheet, setSheet] = useState<"cart" | "sparky" | "reviews" | null>(null);
+  const isSponsoredVideo = Boolean(item.sponsored && item.galleryVideoSrc);
   const closeSheet = () => setSheet(null);
 
   useEffect(() => {
@@ -89,55 +129,74 @@ export default function ItemPage({
             heroImage={item.richGallery ? undefined : item.image}
             videoSrc={item.galleryVideoSrc}
             videoPoster={item.galleryVideoPoster}
+            emphasizeVideo={isSponsoredVideo}
             onSwipePrevItem={onSwipePrevItem}
             onSwipeNextItem={onSwipeNextItem}
           />
-          <ProductActions />
+          {!isSponsoredVideo && <ProductActions />}
         </div>
 
         <div className="relative z-10 bg-white">
-          <ProductInfo
-            title={item.title}
-            store={item.store}
-            rating={item.rating}
-            ratingCount={item.ratingCount}
-            priceDollars={item.priceDollars}
-            priceCents={item.priceCents}
-            priceWas={item.priceWas}
-            savings={item.savings}
-            monthly={item.monthly}
-            onOpenReviews={() => setSheet("reviews")}
-          />
-          <FulfillmentSection />
-          <EligibilityActions />
-          <div className="mx-4 h-px bg-[#E3E4E5]" />
-          <ItemDetails />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <ProtectionPlan />
-          <BuyBoxAd />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <P13NCarousel />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <TotalWirelessBanner />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <SparkyCopilot onOpen={() => setSheet("sparky")} />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <OnePayCard />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <SimilarItemsCarousel />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <AboutThisItem />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <RefineSearch />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <CustomerReviews onOpenReviews={() => setSheet("reviews")} />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <RewardsDebitCard />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <CustomersAlsoConsidered />
-          <div className="h-px w-full bg-[#E3E4E5]" />
-          <FeedbackBanner />
-          <div className="h-px w-full bg-[#E3E4E5]" />
+          {isSponsoredVideo ? (
+            <section className="border-b border-[#E3E4E5] px-4 py-4">
+              <p className="text-[12px] leading-4 text-[#74767C]">Sponsored</p>
+              <h1 className="mt-1 text-[15px] font-medium leading-5 text-ld-text-default">
+                {item.title}
+              </h1>
+              <p className="mt-2 text-[24px] font-bold leading-8 text-[#2A8703]">
+                Now ${item.priceDollars}.{item.priceCents}
+              </p>
+            </section>
+          ) : (
+            <ProductInfo
+              title={item.title}
+              store={item.store}
+              rating={item.rating}
+              ratingCount={item.ratingCount}
+              priceDollars={item.priceDollars}
+              priceCents={item.priceCents}
+              priceWas={item.priceWas}
+              savings={item.savings}
+              monthly={item.monthly}
+              onOpenReviews={() => setSheet("reviews")}
+            />
+          )}
+          {isSponsoredVideo ? (
+            <SponsoredItemDetails item={item} />
+          ) : (
+            <>
+              <FulfillmentSection />
+              <EligibilityActions />
+              <div className="mx-4 h-px bg-[#E3E4E5]" />
+              <ItemDetails />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <ProtectionPlan />
+              <BuyBoxAd />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <P13NCarousel />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <TotalWirelessBanner />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <SparkyCopilot onOpen={() => setSheet("sparky")} />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <OnePayCard />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <SimilarItemsCarousel />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <AboutThisItem />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <RefineSearch />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <CustomerReviews onOpenReviews={() => setSheet("reviews")} />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <RewardsDebitCard />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <CustomersAlsoConsidered />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+              <FeedbackBanner />
+              <div className="h-px w-full bg-[#E3E4E5]" />
+            </>
+          )}
         </div>
       </main>
 
