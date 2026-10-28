@@ -21,6 +21,8 @@ export default function PLPVideoCard({
   const [headline, setHeadline] = useState(0);
   const [paused, setPaused] = useState(false);
   const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null);
+  const [ready, setReady] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
 
   useEffect(() => {
     const t = setInterval(() => setHeadline((h) => (h + 1) % HEADLINES.length), 3000);
@@ -37,6 +39,12 @@ export default function PLPVideoCard({
     <section className="px-4 py-4">
       <div className="overflow-hidden rounded-xl border border-walmart-gray-line bg-white shadow-sm">
         <div className="relative aspect-[16/9] w-full bg-black">
+          <img
+            src={posterFailed ? item.image : item.galleryVideoPoster}
+            alt=""
+            onError={() => setPosterFailed(true)}
+            className={`absolute inset-0 h-full w-full bg-white ${posterFailed ? "object-contain" : "object-cover"}`}
+          />
           <video
             ref={setVideoEl}
             src={item.galleryVideoSrc}
@@ -45,7 +53,11 @@ export default function PLPVideoCard({
             loop
             autoPlay
             playsInline
-            className="h-full w-full object-cover"
+            preload="auto"
+            onPlaying={() => setReady(true)}
+            onLoadedData={() => setReady(true)}
+            onError={() => setReady(false)}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${ready ? "opacity-100" : "opacity-0"}`}
           />
           <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-black/60 to-transparent px-3 pb-6 pr-12 pt-3">
             <p className="text-[18px] font-bold leading-6 text-white">{HEADLINES[headline]}</p>

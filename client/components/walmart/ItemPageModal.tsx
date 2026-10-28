@@ -40,7 +40,7 @@ export default function ItemPageModal({
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     startIndex,
-    loop: true,
+    loop: false,
     align: "center",
   });
   const [selected, setSelected] = useState(startIndex);

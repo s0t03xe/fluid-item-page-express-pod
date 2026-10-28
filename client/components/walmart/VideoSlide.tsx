@@ -96,9 +96,11 @@ export default function VideoSlide({
   isActive,
   fill,
   showMoreVideos = true,
+  fallbackImage,
 }: {
   src: string;
   poster: string;
+  fallbackImage?: string;
   variant: "product" | "social";
   handle?: string;
   isActive: boolean;
@@ -111,6 +113,8 @@ export default function VideoSlide({
   const [captions, setCaptions] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [ready, setReady] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -159,6 +163,12 @@ export default function VideoSlide({
 
   return (
     <div className={`relative h-full w-full overflow-hidden ${fill ? "bg-white" : "bg-[#2E2F32]"}`}>
+      <img
+        src={posterFailed && fallbackImage ? fallbackImage : poster}
+        alt=""
+        onError={() => setPosterFailed(true)}
+        className={`absolute inset-0 h-full w-full ${posterFailed ? "object-contain" : "object-cover"}`}
+      />
       {src && (
         <video
           ref={videoRef}
@@ -167,8 +177,11 @@ export default function VideoSlide({
           muted={muted}
           loop
           playsInline
-          preload="metadata"
-          className={`absolute inset-0 h-full w-full ${fill ? "object-cover" : "object-contain"}`}
+          preload="auto"
+          onPlaying={() => setReady(true)}
+          onLoadedData={() => setReady(true)}
+          onError={() => setReady(false)}
+          className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${ready ? "opacity-100" : "opacity-0"} ${fill ? "object-cover" : "object-contain"}`}
         />
       )}
       {!src && poster && (

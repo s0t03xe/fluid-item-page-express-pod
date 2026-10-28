@@ -272,7 +272,8 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
                 variant={slide.variant}
                 handle={slide.handle}
                 fill={slide.fill}
-                isActive={i === active}
+                fallbackImage={heroImage}
+                isActive={i === active || Boolean(emphasizeVideo)}
                 showMoreVideos={!emphasizeVideo}
               />
             )}

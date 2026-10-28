@@ -63,7 +63,7 @@ export default function PdpSummary({
 
       <div className="flex items-start justify-between gap-3">
         <span className="text-[13px] leading-5 text-ld-text-default underline">
-          Visit the {content.brand ?? item.store.replace(/^Visit the /, "").replace(/ store$/, "")} store
+          {content.brand ? `Visit the ${content.brand} store` : item.store}
         </span>
         <button
           type="button"
