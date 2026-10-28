@@ -17,7 +17,7 @@ import ItemPageModal from "@/components/walmart/ItemPageModal";
 import ConceptSwitcher, {
   type NavConcept,
 } from "@/components/walmart/ConceptSwitcher";
-import { PLP_ORDER, byId, pagerIndexOf, type WalmartItem } from "@/lib/walmart-items";
+import { PLP_ORDER, pagerIndexOf, type WalmartItem } from "@/lib/walmart-items";
 
 const item = (id: string): WalmartItem => {
   const found = PLP_ORDER.find((i) => i.id === id);
@@ -25,7 +25,7 @@ const item = (id: string): WalmartItem => {
   return found;
 };
 
-const BRAND_ITEMS = [byId("veatool-65hr"), item("anc-45db-black")];
+const BRAND_ITEMS = [item("bt-over-ear-65hr"), item("anc-45db-black")];
 const VIDEO_ITEM = item("hybrid-anc-headphones");
 const STARS_ITEMS = [
   item("deal-45db-25-79"),

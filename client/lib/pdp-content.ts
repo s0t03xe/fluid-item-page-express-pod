@@ -3,6 +3,12 @@ import type { WalmartItem } from "@/lib/walmart-items";
 export interface PdpColor { name: string; image?: string }
 export interface PdpReview { title?: string; text?: string; rating: number; author?: string; date?: string; verified?: boolean }
 export interface PdpContent {
+  title: string;
+  priceDollars: string;
+  priceCents: string;
+  priceWas?: string | null;
+  rating: number;
+  ratingCount: number;
   brand?: string;
   seller?: string;
   badges: string[];
@@ -25,9 +31,15 @@ export interface PdpContent {
   similar: { title: string; price?: string; image?: string }[];
 }
 
-/** Real item-page content captured from walmart.com, keyed by WalmartItem id. */
+/** Real item content captured from walmart.com, keyed by WalmartItem id. Single source for the listing and the item page. */
 export const PDP_CONTENT: Record<string, PdpContent> = {
  "airpods-4": {
+  "title": "Apple AirPods 4",
+  "priceDollars": "99",
+  "priceCents": "00",
+  "priceWas": "129.99",
+  "rating": 4.3,
+  "ratingCount": 89033,
   "brand": "Apple",
   "seller": "Walmart.com",
   "badges": [
@@ -192,6 +204,12 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
   ]
  },
  "airpods-pro-3": {
+  "title": "Apple AirPods Pro 3",
+  "priceDollars": "199",
+  "priceCents": "00",
+  "priceWas": "249.00",
+  "rating": 4.4,
+  "ratingCount": 19279,
   "brand": "Apple",
   "seller": "Walmart.com",
   "badges": [
@@ -358,6 +376,12 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
   ]
  },
  "beats-studio-pro": {
+  "title": "Beats Studio Pro Wireless Headphones - Matte White",
+  "priceDollars": "149",
+  "priceCents": "00",
+  "priceWas": "299.00",
+  "rating": 4.5,
+  "ratingCount": 9135,
   "brand": "Beats by Dr. Dre",
   "seller": "Walmart.com",
   "badges": [
@@ -552,6 +576,12 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
   ]
  },
  "samsung-buds4-pro": {
+  "title": "Samsung Galaxy Buds4 Pro Bluetooth Headphones and Charging Case, Black",
+  "priceDollars": "249",
+  "priceCents": "99",
+  "priceWas": null,
+  "rating": 4.7,
+  "ratingCount": 2831,
   "brand": "Samsung",
   "seller": "Walmart.com",
   "badges": [
@@ -725,6 +755,12 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
   ]
  },
  "onn-pink": {
+  "title": "onn On-Ear Headphones with 3.5 mm Connector, Pink",
+  "priceDollars": "7",
+  "priceCents": "93",
+  "priceWas": null,
+  "rating": 4.5,
+  "ratingCount": 1275,
   "brand": "onn",
   "seller": "Walmart.com",
   "badges": [
@@ -912,186 +948,12 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
   ]
  },
  "bt-over-ear-65hr": {
-  "brand": "VEAT00L",
-  "seller": "VEATOOL",
-  "badges": [
-   "100+ bought since yesterday",
-   "Deal",
-   "Overall pick"
-  ],
-  "colors": [
-   {
-    "name": "Blue"
-   },
-   {
-    "name": "Gold"
-   },
-   {
-    "name": "Orange"
-   },
-   {
-    "name": "Pink"
-   },
-   {
-    "name": "Purple"
-   },
-   {
-    "name": "black gray"
-   }
-  ],
-  "gallery": [
-   "https://i5.walmartimages.com/seo/Bluetooth-Headphones-Ear-65Hrs-Playtime-Wireless-Headphones-Bass-Boosted-90-Lightweight-Headset-Deep-Bass-Clear-Call-4-Noise-Cancelling-Mics-Low-Late_51533b6e-c49e-4459-9787-3c45d26de3ec.6ad6cf413848b8ff85c27d97aca66841.jpeg",
-   "https://i5.walmartimages.com/asr/b2dae735-4b6d-4f9b-9134-7f4f3626515f.b3bc8ecb0eb3deda9a44069f96eeda19.jpeg",
-   "https://i5.walmartimages.com/asr/538c6ae5-ce57-4a8e-bfb9-570352ac42f7.342207ef07407311526d6de4ca53b7d4.jpeg",
-   "https://i5.walmartimages.com/asr/6eed6709-e930-48c1-8bb3-d7aaa1973ffc.cc05bf7d0bb4e6f62ad70688e83f979d.jpeg",
-   "https://i5.walmartimages.com/asr/a3074f39-d37e-4ff4-bc44-43e4360c1339.9898b469b9e6cd4c6eca331edf15229f.jpeg",
-   "https://i5.walmartimages.com/asr/6fb3debb-7d5c-4299-bab0-ef008d67af74.1ac7fba35991bb2459d5606bf6fe77c2.jpeg"
-  ],
-  "videos": [],
-  "keyFeatures": [
-   "Battery life: 65 h",
-   "Headphone style: Over-Ear",
-   "Noise control technology: Sound Isolation",
-   "Wireless: Y",
-   "Brand: VEAT00L",
-   "Works with: APPLE",
-   "Ip code: IPX7",
-   "Assembled product weight: 0.09 lb"
-  ],
-  "about": [
-   "【Bluetooth 5.4&Dual-Connections】 Equipped with the latest Bluetooth 5.4 tech, BT1632 over ear wireless headphones provide faster pairing, lower latency, and more stable connections across devices. Two smart devices can be connected to VEATOOL over-ear headphones at the same time, makes you able to pick up a call from your phones when watching movie on your pad without switching.",
-   "【Immersive Sound with Rich Deep Bass】 The 40mm drivers produce a wide frequency range that uncovers rich detail of sound with thumping bass and crisp highs, thanks to titanium-plated diaphragm and stonger"
-  ],
-  "specs": [
-   {
-    "name": "Battery life",
-    "value": "65 h"
-   },
-   {
-    "name": "Headphone style",
-    "value": "Over-Ear"
-   },
-   {
-    "name": "Noise control technology",
-    "value": "Sound Isolation"
-   },
-   {
-    "name": "Wireless",
-    "value": "Y"
-   },
-   {
-    "name": "Wireless technology",
-    "value": "Bluetooth 5.4"
-   },
-   {
-    "name": "Brand",
-    "value": "VEAT00L"
-   },
-   {
-    "name": "Rec. use",
-    "value": "Classroom, Casual Listening, Sports"
-   },
-   {
-    "name": "Works with",
-    "value": "APPLE"
-   },
-   {
-    "name": "Ip code",
-    "value": "IPX7"
-   },
-   {
-    "name": "Assembled product weight",
-    "value": "0.09 lb"
-   }
-  ],
-  "fulfillment": [
-   "Shipping, arrives by tomorrow to San Jose, 95129",
-   "Pickup not available at Sacramento Gerber Rd Supercenter"
-  ],
-  "returns": "Free Holiday returns until Jan 31. 30-Day return window. Free returns",
-  "reviewSummary": {
-   "average": 4.2,
-   "total": 4565,
-   "histogram": {
-    "5": 3078,
-    "4": 472,
-    "3": 284,
-    "2": 198,
-    "1": 533
-   },
-   "positive": [
-    "Snug ear fit",
-    "Great value for money",
-    "Snug full-ear fit"
-   ],
-   "negative": []
-  },
-  "reviews": [
-   {
-    "title": "Nice Headphones for the Quality and Price",
-    "text": "The Bluetooth Headphones were great. I liked the price and quality of the headphones.",
-    "rating": 5,
-    "author": "Wayne",
-    "date": "10/10/2026",
-    "verified": true
-   },
-   {
-    "title": "Nice",
-    "text": "Grate sound and comfortable with long battery hours before recharging.",
-    "rating": 5,
-    "author": "Louis",
-    "date": "5/22/2026",
-    "verified": true
-   },
-   {
-    "text": "great value for the price and the head phone sounds excellent",
-    "rating": 5,
-    "author": "Lawrence",
-    "date": "10/23/2026",
-    "verified": true
-   },
-   {
-    "text": "Great sound and not too loud",
-    "rating": 5,
-    "author": "Mike",
-    "date": "10/12/2026",
-    "verified": true
-   }
-  ],
-  "similar": [
-   {
-    "title": "Active Noise Cancelling Headphones,60H Playtime Bluetooth 6.0 Wireless Headphones with Hi-Res Audio, Over Ear Headphones with Microphone, Deep Bass,Comfort Fit…",
-    "price": "$29.79",
-    "image": "https://i5.walmartimages.com/asr/fee2d044-a366-481d-9082-6ebccac7bd5b.98728aea4ddfc18156e393200752ad4a.png"
-   },
-   {
-    "title": "Skullcandy Smokin' Buds 360 XT True Wireless in-Ear Earbuds, Black",
-    "price": "$14.88",
-    "image": "https://i5.walmartimages.com/asr/e14f4fd5-54d1-4d7b-8f50-1e3bd6878971.f413b4631d19da213e23d2e1e9cf4b6c.png"
-   },
-   {
-    "title": "QearFun Bluetooth Headphones for Kids, Wireless Headphones with Built-in Mic, Includes Aux Cord, USB C, 3.5mm Jack, Bluetooth 5.3, On Ear Kids Headphones for…",
-    "price": "$19.98",
-    "image": "https://i5.walmartimages.com/asr/69cc5714-0284-427e-a3da-bdad0c3587e0.a45ece42cf9394cca3cdd1588f13ce2b.jpeg"
-   },
-   {
-    "title": "JVC HA-S23W Wireless Headphones - On Ear Bluetooth Headphones, Foldable Flat Design, 17-Hour Long Battery Life (Black)",
-    "price": "$24.55",
-    "image": "https://i5.walmartimages.com/asr/f410749d-647d-44e5-bf57-c4c90075386c.40cfbf203f4f13d562398b50984f7c6a.jpeg"
-   },
-   {
-    "title": "Rirool Bluetooth Over-Ear Headphones, Wireless Foldable Headset with HiFi Stereo Deep Bass, 12H Playtime, Built-in Mic, Soft Protein Earpads for Travel, Home…",
-    "price": "$12.99",
-    "image": "https://i5.walmartimages.com/asr/06f96df6-b4ba-4e0a-9c63-d2b0e4142cae.b4e00e3288d243d57369082af60d98be.png"
-   },
-   {
-    "title": "Wireless Bluetooth Headphones 5.1,40 Hrs Playtime Wireless Over-Ear Headphones,4 Mics ENC Noise Cancelling for Clear Calls, Lightweight Headset with Deep Bass…",
-    "price": "$19.29",
-    "image": "https://i5.walmartimages.com/asr/b9febf6c-b568-4825-8545-d6640a85c728.76c8e720c1e483b861afd9d966632873.png"
-   }
-  ]
- },
- "veatool-65hr": {
+  "title": "Bluetooth Headphones Over Ear, 65Hrs Playtime Wireless Headphones,Bass Boosted by 90%,Lightweight Headset with Deep Bass, Clear Call with 4 Noise Cancelling Mics,Low Latency for Travel Work Cellphone",
+  "priceDollars": "19",
+  "priceCents": "49",
+  "priceWas": "169.98",
+  "rating": 4.2,
+  "ratingCount": 4565,
   "brand": "VEAT00L",
   "seller": "VEATOOL",
   "badges": [
@@ -1272,6 +1134,12 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
   ]
  },
  "anc-45db-black": {
+  "title": "Active Noise Cancelling Headphones, -45dB Bluetooth Headphones 5.4, 50H Playtime Earbuds, Bass Boosted by 90%, Clear Call with 4 Mics, Comfort Fit Over Ear Headphones for Travel Home Office PC Black",
+  "priceDollars": "24",
+  "priceCents": "29",
+  "priceWas": "169.99",
+  "rating": 4.2,
+  "ratingCount": 1364,
   "brand": "IKT",
   "seller": "IKT-US",
   "badges": [
@@ -1442,6 +1310,12 @@ export const PDP_CONTENT: Record<string, PdpContent> = {
   ]
  },
  "hybrid-anc-headphones": {
+  "title": "Hybrid Active Noise Cancelling Headphones Wireless Bluetooth Over Ear - 50dB ANC, 120H Playback, 6-MIC ENC Clear Calls, Hi-Res 360° Spatial Audio, Foldable Comfort for Travel Office",
+  "priceDollars": "39",
+  "priceCents": "79",
+  "priceWas": "339.99",
+  "rating": 4.4,
+  "ratingCount": 204,
   "brand": "VEAT00L",
   "seller": "CAPOXO",
   "badges": [
@@ -1614,6 +1488,12 @@ export function getPdpContent(item: WalmartItem): PdpContent {
   const known = PDP_CONTENT[item.id];
   if (known) return known;
   return {
+    title: item.title,
+    priceDollars: item.priceDollars,
+    priceCents: item.priceCents,
+    priceWas: item.priceWas,
+    rating: item.rating,
+    ratingCount: 0,
     badges: item.badge ? [item.badge] : [],
     colors: [],
     gallery: [item.image],

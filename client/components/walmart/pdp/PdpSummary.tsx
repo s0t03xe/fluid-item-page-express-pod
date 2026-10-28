@@ -42,15 +42,16 @@ export default function PdpSummary({
 }) {
   const [color, setColor] = useState(0);
   const savings = savingsOf(item);
+  const badges = Array.from(new Set([item.badge, ...content.badges].filter((b): b is string => Boolean(b))));
   const returns = content.returns?.split(". ")[0]?.replace(/\.$/, "");
   const swatches = content.colors;
   const selected = swatches[Math.min(color, swatches.length - 1)];
 
   return (
     <section className="flex flex-col gap-3 px-4 pb-4 pt-3">
-      {content.badges.length > 0 && (
+      {badges.length > 0 && (
         <div className="flex flex-wrap gap-2">
-          {content.badges.slice(0, 3).map((b) => (
+          {badges.slice(0, 3).map((b) => (
             <span
               key={b}
               className={`rounded-full px-2.5 py-1 text-[12px] font-bold leading-4 ${badgeClass(b)}`}

@@ -1,3 +1,5 @@
+import { PDP_CONTENT } from "@/lib/pdp-content";
+
 export interface WalmartItem {
   id: string;
   image: string;
@@ -69,7 +71,7 @@ const AIRPODS_PRO_3_IMG =
   WM +
   "AirPods-Pro-3_bbf7d96e-0ea2-4adc-93cc-f2aefe9c9fad.5094bad5696a875c3e764810e9670083.jpeg?odnHeight=328&odnWidth=328&odnBg=FFFFFF";
 
-export const WALMART_ITEMS: WalmartItem[] = [
+const BASE_ITEMS: WalmartItem[] = [
   {
     id: "cillso-earbuds",
     image: JLAB_EARBUDS_IMG,
@@ -150,7 +152,6 @@ export const WALMART_ITEMS: WalmartItem[] = [
     priceCents: "00",
     priceWas: "9.88",
     savings: "3.88",
-    optionsFrom: "6.00 – 18.20",
     monthly: "3",
     badge: "Overall pick",
     badgeKind: "outline",
@@ -159,8 +160,6 @@ export const WALMART_ITEMS: WalmartItem[] = [
       "Shipping arrives today",
       "Pickup as soon as 7am",
     ],
-    swatches: ["#1c1c1c", "#3b6bd1", "#f2c9d8"],
-    appleOffer: "4 free offers from Apple",
   },
   {
     id: "bt-over-ear-65hr",
@@ -181,21 +180,6 @@ export const WALMART_ITEMS: WalmartItem[] = [
     sponsored: true,
     saveWithPlus: true,
     shippingLines: ["Shipping, arrives tomorrow"],
-  },
-  {
-    id: "veatool-65hr",
-    image: VEATOOL_65HR_IMG,
-    title:
-      "Bluetooth Headphones Over Ear, 65Hrs Playtime Wireless Headphones, Bass Boosted by 90%, Lightweight Headset with Deep Bass",
-    store: "Visit the VEATOOL store",
-    rating: 4.4,
-    ratingCount: "4565",
-    priceDollars: "20",
-    priceCents: "79",
-    priceWas: "159.98",
-    savings: "139.19",
-    monthly: "10",
-    sponsored: true,
   },
   {
     id: "anc-45db-black",
@@ -362,6 +346,46 @@ export const WALMART_ITEMS: WalmartItem[] = [
   },
 ];
 
+const BADGE_PRIORITY = ["Rollback", "Deal", "Best seller"];
+
+function badgeKindOf(text: string): WalmartItem["badgeKind"] {
+  const t = text.toLowerCase();
+  if (t === "rollback") return "rollback";
+  if (t === "deal") return "deal";
+  if (t.includes("best seller")) return "bestseller";
+  return "outline";
+}
+
+/** Facts captured from walmart.com (PDP_CONTENT) win over hand-typed values, so listing and item page always agree. */
+function applyContent(item: WalmartItem): WalmartItem {
+  const c = PDP_CONTENT[item.id];
+  if (!c) return item;
+  const badge = BADGE_PRIORITY.find((b) => c.badges.includes(b)) ?? c.badges[0];
+  const shipping = c.fulfillment[0]
+    ?.replace(/ to San Jose, 95129$/, "")
+    .replace(/arrives by /i, "arrives ");
+  const savings = c.priceWas
+    ? (parseFloat(c.priceWas) - parseFloat(`${c.priceDollars}.${c.priceCents}`)).toFixed(2)
+    : undefined;
+  return {
+    ...item,
+    title: c.title,
+    image: c.gallery[0] ?? item.image,
+    store: c.brand ? `Visit the ${c.brand} store` : item.store,
+    rating: c.rating,
+    ratingCount: c.ratingCount.toLocaleString("en-US"),
+    priceDollars: c.priceDollars,
+    priceCents: c.priceCents,
+    priceWas: c.priceWas ?? undefined,
+    savings,
+    badge,
+    badgeKind: badge ? badgeKindOf(badge) : undefined,
+    shippingLines: shipping ? [shipping] : item.shippingLines,
+  };
+}
+
+export const WALMART_ITEMS: WalmartItem[] = BASE_ITEMS.map(applyContent);
+
 export const byId = (id: string) => {
   const item = WALMART_ITEMS.find((i) => i.id === id);
   if (!item) throw new Error(`Unknown item ${id}`);
@@ -385,9 +409,8 @@ export const PLP_ORDER: WalmartItem[] = [
   "onn-pink",
 ].map(byId);
 
-/** Listing tiles that share a product with a pager item resolve to it. */
+/** Index of an item in the item-page pager. */
 export const pagerIndexOf = (item: WalmartItem) => {
-  const target = item.id === "veatool-65hr" ? "bt-over-ear-65hr" : item.id;
-  const index = PLP_ORDER.findIndex((i) => i.id === target);
+  const index = PLP_ORDER.findIndex((i) => i.id === item.id);
   return index >= 0 ? index : 0;
 };
