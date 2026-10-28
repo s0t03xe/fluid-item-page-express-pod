@@ -20,10 +20,10 @@ export default function DeliveryBar() {
   return (
     <div className="flex items-center gap-2 bg-walmart-blue px-4 pb-2.5 pt-1 text-white">
       <PickupIcon />
-      <span className="flex-1 truncate text-[13px] font-semibold leading-4">
+      <span className="flex-1 truncate text-[14px] font-semibold leading-4">
         Pickup or delivery?
       </span>
-      <span className="truncate text-[13px] leading-4">Sacramento, 95829</span>
+      <span className="truncate text-[14px] leading-4">San Jose, 95129</span>
       <ChevronDown size={16} className="shrink-0" />
     </div>
   );

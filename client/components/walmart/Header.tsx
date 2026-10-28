@@ -1,9 +1,23 @@
-import { Barcode, Cart, ChevronLeft, Search } from "./icons";
+import { Cart, ChevronLeft, Search } from "./icons";
+
+function CameraIcon({ className }: { className?: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={className}>
+      <path
+        d="M3.5 8.5a2 2 0 0 1 2-2h2l1.2-1.8a1 1 0 0 1 .8-.4h5a1 1 0 0 1 .8.4L16.5 6.5h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-9Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="12.8" r="3.4" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
+  );
+}
 
 export default function Header({
   query,
-  cartCount = 1,
-  cartPrice = "$4.75",
+  cartCount = 0,
+  cartPrice = "$0.00",
 }: {
   query?: string;
   cartCount?: number;
@@ -29,7 +43,7 @@ export default function Header({
           </span>
         </div>
 
-        <Barcode size={24} className="shrink-0 text-ld-text-default" />
+        <CameraIcon className="shrink-0 text-ld-text-default" />
       </div>
 
       {/* Cart */}

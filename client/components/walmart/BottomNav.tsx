@@ -36,34 +36,64 @@ function AccountIcon() {
 const SPARKY_IMG = "https://cdn.builder.io/api/v1/file/assets%2F02297b1ff48d4a2f8e4d9ed415c47ecf%2Fa7b40f2aa52b4d2ba5dd1649daa60e15";
 
 const TABS = [
-  { label: "Shop", active: true },
-  { label: "My Items", active: false },
-  { label: "Ask Sparky", active: false },
-  { label: "Services", active: false },
-  { label: "Account", active: false },
+  { label: "Shop" },
+  { label: "My Items" },
+  { label: "Sparky" },
+  { label: "Services" },
+  { label: "Account" },
 ] as const;
 
-function TabIcon({ label }: { label: string }) {
+function TabIcon({ label, raised }: { label: string; raised: boolean }) {
   if (label === "Shop") return <ShopIcon />;
   if (label === "My Items") return <HeartIcon />;
-  if (label === "Ask Sparky") return <img src={SPARKY_IMG} alt="" width={24} height={24} className="h-6 w-6" />;
+  if (label === "Sparky")
+    return (
+      <span
+        className={`flex items-center justify-center rounded-full transition-all duration-300 ${
+          raised ? "-mt-5 h-[52px] w-[52px] bg-white shadow-md" : "h-6 w-6"
+        }`}
+      >
+        <img
+          src={SPARKY_IMG}
+          alt=""
+          className={`transition-all duration-300 ${raised ? "h-11 w-11" : "h-6 w-6"}`}
+        />
+      </span>
+    );
   if (label === "Services") return <ServicesIcon />;
-  return <AccountIcon />;
+  return (
+    <span className="relative">
+      <AccountIcon />
+      <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-white bg-[#E41404]" />
+    </span>
+  );
 }
 
-export default function BottomNav() {
+export default function BottomNav({
+  sparkyRaised = false,
+  active = "Shop",
+}: {
+  sparkyRaised?: boolean;
+  active?: string;
+}) {
   return (
-    <nav className="relative z-20 border-t border-[#E3E4E5] bg-white">
-      <div className="flex items-start">
+    <nav
+      aria-label="Shop My Items Sparky Services Account"
+      className="rounded-full bg-white/95 px-2 py-1.5 shadow-[0_2px_14px_rgba(0,0,0,0.18)] backdrop-blur"
+    >
+      <div className="flex items-end">
         {TABS.map((tab) => (
           <button
             key={tab.label}
-            className="flex flex-1 flex-col items-center gap-0.5 pb-1 pt-2"
+            type="button"
+            className={`flex flex-1 flex-col items-center gap-0.5 rounded-full pb-1 pt-2 ${
+              tab.label === active ? "bg-[#E4E4E4]" : ""
+            }`}
           >
-            <TabIcon label={tab.label} />
+            <TabIcon label={tab.label} raised={sparkyRaised && tab.label === "Sparky"} />
             <span
               className="text-[12px] leading-4"
-              style={{ color: tab.active ? "#0053E2" : "#46474A" }}
+              style={{ color: tab.label === active ? "#0053E2" : "#2E2F32" }}
             >
               {tab.label}
             </span>

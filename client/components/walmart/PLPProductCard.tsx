@@ -1,52 +1,8 @@
 import { Heart } from "@/components/walmart/icons";
 import type { WalmartItem } from "@/lib/walmart-items";
-
-function StarIcon({ variant }: { variant: "full" | "half" | "empty" }) {
-  if (variant === "empty") {
-    return (
-      <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-        <path
-          d="M6 0.5 7.5 4l3.5.5-2.7 2.5.7 3.5L6 8.7 2.5 10.5l.7-3.5L.5 4.5 4 4Z"
-          stroke="#BABBBE"
-        />
-      </svg>
-    );
-  }
-  return (
-    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-      <defs>
-        <linearGradient id="plp-star-half">
-          <stop offset="50%" stopColor="#FFC220" />
-          <stop offset="50%" stopColor="transparent" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M6 0.5 7.5 4l3.5.5-2.7 2.5.7 3.5L6 8.7 2.5 10.5l.7-3.5L.5 4.5 4 4Z"
-        fill={variant === "half" ? "url(#plp-star-half)" : "#FFC220"}
-        stroke={variant === "half" ? "#FFC220" : "none"}
-      />
-    </svg>
-  );
-}
-
-function RatingRow({ rating, count }: { rating: number; count: string }) {
-  return (
-    <div className="flex items-center gap-1">
-      <div className="flex gap-px">
-        {Array.from({ length: 5 }).map((_, i) => {
-          const variant =
-            i + 1 <= Math.floor(rating)
-              ? "full"
-              : i < rating
-                ? "half"
-                : "empty";
-          return <StarIcon key={i} variant={variant} />;
-        })}
-      </div>
-      <span className="text-[12px] leading-4 text-[#74767C]">{count}</span>
-    </div>
-  );
-}
+import PLPBadge from "@/components/walmart/PLPBadge";
+import PLPPrice from "@/components/walmart/PLPPrice";
+import PLPRating, { Fulfillment, SaveWithPlus } from "@/components/walmart/PLPRating";
 
 export default function PLPProductCard({
   item,
@@ -56,111 +12,75 @@ export default function PLPProductCard({
   onSelect: () => void;
 }) {
   return (
-    <div className="flex flex-col gap-2 py-4">
-      {item.badge && (
-        <span className="w-fit rounded border border-[#BEDBFF] bg-[#F0F5FF] px-2 py-1 text-[12px] font-bold leading-4 text-[#114AB6]">
-          {item.badge}
-        </span>
-      )}
-
-      <div className="flex items-start gap-3">
+    <div className="flex items-start gap-3 py-5">
+      <div className="relative w-0 flex-1">
         <button
           type="button"
           onClick={onSelect}
-          className="relative aspect-square w-0 flex-1 overflow-hidden rounded-lg bg-white"
+          aria-label={item.title}
+          className="relative block aspect-square w-full overflow-hidden bg-white"
         >
-          <img
-            src={item.image}
-            alt={item.title}
-            className="h-full w-full object-contain"
-          />
-          <span className="absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-white">
-            <Heart size={13} />
-          </span>
+          <img src={item.image} alt="" className="h-full w-full object-contain" />
         </button>
-
-        <div className="flex w-0 flex-1 flex-col gap-1">
-          {item.sponsored ? (
-            <span className="text-[12px] leading-4 text-[#74767C]">
-              Sponsored
-            </span>
-          ) : (
-            <div className="h-4" />
-          )}
-
-          <div className="flex flex-wrap items-baseline gap-2">
-            {item.priceWas ? (
-              <>
-                <span className="text-[18px] font-bold leading-6 text-ld-text-default">
-                  Now ${item.priceDollars}.{item.priceCents}
-                </span>
-                <span className="text-[13px] leading-4 text-[#74767C] line-through">
-                  ${item.priceWas}
-                </span>
-              </>
-            ) : (
-              <span className="text-[18px] font-bold leading-6 text-ld-text-default">
-                ${item.priceDollars}.{item.priceCents}
-              </span>
+        <div className="pointer-events-none absolute left-0 top-0">
+          <PLPBadge item={item} />
+        </div>
+        <button
+          type="button"
+          aria-label="Add to list"
+          className="absolute right-1 top-6 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-sm"
+        >
+          <Heart size={14} />
+        </button>
+        {item.swatches && (
+          <div className="mt-1 flex items-center gap-1.5 pl-2">
+            {item.swatches.map((color) => (
+              <span
+                key={color}
+                className="h-4 w-4 rounded-full border border-walmart-gray-line"
+                style={{ backgroundColor: color }}
+              />
+            ))}
+            {item.swatches.length > 3 && (
+              <span className="text-[12px] text-ld-text-default">+2</span>
             )}
           </div>
-          {item.optionsFrom && (
-            <span className="text-[12px] leading-4 text-[#74767C]">
-              Options from ${item.optionsFrom}
-            </span>
-          )}
+        )}
+      </div>
 
-          <button
-            type="button"
-            onClick={onSelect}
-            className="line-clamp-2 text-left text-[14px] leading-5 text-ld-text-default"
-          >
-            {item.title}
-          </button>
+      <div className="flex w-0 flex-1 flex-col gap-1">
+        {item.sponsored && (
+          <span className="text-[13px] leading-4 text-[#74767C]">Sponsored</span>
+        )}
+        <PLPPrice item={item} />
+        {item.optionsFrom && (
+          <span className="text-[14px] leading-5 text-[#74767C]">
+            Options from ${item.optionsFrom}
+          </span>
+        )}
 
-          <RatingRow rating={item.rating} count={item.ratingCount} />
+        <button
+          type="button"
+          onClick={onSelect}
+          className="line-clamp-3 text-left text-[15px] leading-5 text-ld-text-default"
+        >
+          {item.title}
+        </button>
 
-          {item.saveWithPlus && (
-            <span className="flex items-center gap-1 text-[13px] font-semibold text-walmart-blue">
-              Save with{" "}
-              <span className="rounded bg-walmart-blue px-1 text-[11px] font-bold text-white">
-                W+
-              </span>
-            </span>
-          )}
+        <PLPRating rating={item.rating} count={item.ratingCount} idPrefix={`plp-${item.id}`} />
+        {item.saveWithPlus && <SaveWithPlus />}
+        {item.shippingLines?.map((line) => <Fulfillment key={line} line={line} />)}
+        {item.appleOffer && (
+          <span className="text-[13px] leading-4 text-ld-text-default">{item.appleOffer}</span>
+        )}
 
-          {item.shippingLines?.map((line) => (
-            <p key={line} className="text-[12px] leading-4 text-ld-text-default">
-              {line}
-            </p>
-          ))}
-
-          {item.swatches && (
-            <div className="flex gap-1.5 pt-1">
-              {item.swatches.map((color) => (
-                <span
-                  key={color}
-                  className="h-4 w-4 rounded-full border border-walmart-gray-line"
-                  style={{ backgroundColor: color }}
-                />
-              ))}
-            </div>
-          )}
-
-          {item.appleOffer && (
-            <span className="text-[12px] leading-4 text-ld-text-default">
-              {item.appleOffer}
-            </span>
-          )}
-
-          <button
-            type="button"
-            onClick={onSelect}
-            className="mt-1 flex h-11 items-center justify-center rounded-full bg-walmart-blue text-[16px] font-bold text-white active:opacity-90"
-          >
-            Add to cart
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onSelect}
+          className="mt-2 flex h-10 items-center justify-center rounded-full bg-walmart-blue text-[15px] font-bold text-white active:opacity-90"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );

@@ -16,8 +16,8 @@ function InfoCircle() {
 
 export default function PLPResultsHeader({ count = "1000+" }: { count?: string }) {
   return (
-    <div className="flex items-center gap-2 border-b border-walmart-gray-line px-4 py-2.5">
-      <span className="text-[13px] font-bold leading-4 text-ld-text-default">
+    <div className="flex items-center gap-2 border-b border-walmart-gray-line px-4 py-3">
+      <span className="text-[14px] font-bold leading-4 text-ld-text-default">
         {count} Results
       </span>
       <span className="text-[12px] leading-4 text-[#74767C]">
