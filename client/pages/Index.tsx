@@ -55,7 +55,7 @@ export default function Index() {
     startIndex: number;
     key: number;
   } | null>(null);
-  const [concept, setConcept] = useState<NavConcept>(1);
+  const [concept, setConcept] = useState<NavConcept>(2);
   const [sparkyVisible, setSparkyVisible] = useState(false);
   const [sparkyDismissed, setSparkyDismissed] = useState(false);
   const [sparkyExpanded, setSparkyExpanded] = useState(true);
