@@ -63,6 +63,7 @@ export default function ItemPage({
   const hasContent = content.keyFeatures.length > 0;
   const hasAiSummary = content.videos.length > 0;
   const hasVariants = content.colors.length > 1;
+  const trtb = topReasonToBuy(item.id);
   const openCart = () => setSheet("cart");
 
   useEffect(() => {
@@ -122,12 +123,11 @@ export default function ItemPage({
               videoSrc={item.galleryVideoSrc}
               videoPoster={item.galleryVideoPoster}
               emphasizeVideo={isSponsoredVideo}
-              sponsored={isSponsoredVideo}
               active={active}
               onSwipePrevItem={onSwipePrevItem}
               onSwipeNextItem={onSwipeNextItem}
             />
-            <QuickActions />
+            {!isSponsoredVideo && <QuickActions />}
           </div>
 
           <div className="relative z-10 bg-white">
@@ -135,16 +135,17 @@ export default function ItemPage({
               item={item}
               content={content}
               onOpenReviews={() => setSheet("reviews")}
+              sponsored={isSponsoredVideo}
               noVariantsExtra={
                 <>
-                  {topReasonToBuy(item.id) && (
-                    <TopReasonToBuy text={topReasonToBuy(item.id)} />
-                  )}
+                  {trtb && <TopReasonToBuy data={trtb} content={content} />}
                   <SparkyChips onOpen={() => setSheet("sparky")} compact />
-                  <ReviewHighlights
-                    content={content}
-                    onOpenReviews={() => setSheet("reviews")}
-                  />
+                  {!trtb && (
+                    <ReviewHighlights
+                      content={content}
+                      onOpenReviews={() => setSheet("reviews")}
+                    />
+                  )}
                 </>
               }
             />

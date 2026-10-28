@@ -105,9 +105,29 @@ export function QuickActions() {
   );
 }
 
-const TRTB_BY_ITEM: Record<string, string> = {
-  "anc-45db-black":
-    "Tune out airplane and engine noise with -45dB active noise cancellation, and keep listening for up to 50 hours on one charge. The foldable over-ear design packs away easily for travel, work and school.",
+export type TrtbData = {
+  text: string;
+  features: { title: string; body: string }[];
+};
+
+const TRTB_BY_ITEM: Record<string, TrtbData> = {
+  "anc-45db-black": {
+    text: "Tune out airplane and engine noise with -45dB active noise cancellation, and keep listening for up to 50 hours on one charge. The foldable over-ear design packs away easily for travel, work and school.",
+    features: [
+      {
+        title: "Active Noise Cancellation",
+        body: "Built-in and external mics filter up to 90% of low-frequency noise like airplane and car engines.",
+      },
+      {
+        title: "Up to 50 Hours of Playtime",
+        body: "Bluetooth 5.4 and a long-lasting battery keep your music going for days between charges.",
+      },
+      {
+        title: "Folds Up Small",
+        body: "Ear cups rotate and fold flat to fit easily into travel, work and school bags.",
+      },
+    ],
+  },
 };
 
 export function topReasonToBuy(itemId: string) {
@@ -116,27 +136,126 @@ export function topReasonToBuy(itemId: string) {
 
 const TRTB_PREVIEW_CHARS = 68;
 
-export function TopReasonToBuy({ text }: { text: string }) {
-  const [expanded, setExpanded] = useState(false);
-  const long = text.length > TRTB_PREVIEW_CHARS;
-  const shown = expanded || !long ? text : `${text.slice(0, TRTB_PREVIEW_CHARS).replace(/\s+\S*$/, "")}…`;
+function TrtbPill({
+  kind,
+  children,
+}: {
+  kind: "good" | "neutral" | "link";
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex items-start gap-2 rounded-xl border border-[#DAD6EE] bg-[#F1EFFA] px-3 py-2.5 text-[13px] leading-[18px] text-ld-text-default">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0" aria-hidden="true">
-        <path d="M10 3 11.8 8.2 17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3Zm8 9 .9 2.6L21.5 15.5l-2.6.9L18 19l-.9-2.6-2.6-.9 2.6-.9L18 12Z" fill="currentColor" />
-      </svg>
-      <p>
-        {shown}{" "}
-        {long && (
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="font-bold underline"
-          >
-            {expanded ? "View less" : "View more"}
-          </button>
-        )}
-      </p>
+    <span className="flex items-center gap-1.5 rounded-full border border-[#E3E4E5] bg-white px-3 py-1.5 text-[13px] font-bold leading-4 text-[#041C3C]">
+      {kind === "good" && (
+        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#2A8703] text-white">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+            <path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      )}
+      {kind === "neutral" && (
+        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#74767C] text-white">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+            <path d="M6 12h12" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" />
+          </svg>
+        </span>
+      )}
+      {children}
+      {kind === "link" && (
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+          <path d="m9 6 6 6-6 6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )}
+    </span>
+  );
+}
+
+export function TopReasonToBuy({ data, content }: { data: TrtbData; content: PdpContent }) {
+  const [expanded, setExpanded] = useState(false);
+  const { text } = data;
+  const long = text.length > TRTB_PREVIEW_CHARS;
+  const shown =
+    expanded || !long ? text : `${text.slice(0, TRTB_PREVIEW_CHARS).replace(/\s+\S*$/, "")}…`;
+  const { positive, negative } = content.reviewSummary;
+
+  return (
+    <div className="rounded-xl border border-[#DAD6EE] bg-gradient-to-b from-[#ECE9F9] to-white px-3 py-2.5 text-[13px] leading-[18px] text-ld-text-default">
+      <div className="flex items-start gap-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0" aria-hidden="true">
+          <path d="M10 3 11.8 8.2 17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3Zm8 9 .9 2.6L21.5 15.5l-2.6.9L18 19l-.9-2.6-2.6-.9 2.6-.9L18 12Z" fill="currentColor" />
+        </svg>
+        <p>
+          {shown}{" "}
+          {!expanded && long && (
+            <button type="button" onClick={() => setExpanded(true)} className="font-bold underline">
+              View more
+            </button>
+          )}
+        </p>
+      </div>
+
+      {expanded && (
+        <div className="mt-3 flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-baseline justify-between">
+              <h3 className="text-[13px] font-bold leading-4">Key item features</h3>
+              <button type="button" className="text-[12px] underline">
+                View item details
+              </button>
+            </div>
+            <ul className="flex flex-col gap-2">
+              {data.features.map((f) => (
+                <li key={f.title} className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#2E2F32]" />
+                  <div>
+                    <p className="font-bold">{f.title}</p>
+                    <p className="text-[#46474A]">{f.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {(positive.length > 0 || negative.length > 0) && (
+            <div className="flex flex-col gap-2 border-t border-[#E3E4E5] pt-3">
+              <h3 className="text-[13px] font-bold leading-4">What customers say</h3>
+              <div className="flex flex-wrap gap-2">
+                {positive.map((t) => (
+                  <TrtbPill key={t} kind="good">
+                    {t}
+                  </TrtbPill>
+                ))}
+                {negative.map((t) => (
+                  <TrtbPill key={t} kind="neutral">
+                    {t}
+                  </TrtbPill>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="flex flex-col gap-2 border-t border-[#E3E4E5] pt-3">
+            <h3 className="text-[13px] font-bold leading-4">Shop confidently</h3>
+            <div className="flex flex-wrap gap-2">
+              <TrtbPill kind="link">Free shipping</TrtbPill>
+              <TrtbPill kind="link">Free 90-day returns</TrtbPill>
+              <TrtbPill kind="link">Low return rate for this item</TrtbPill>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between text-[12px] leading-4">
+            <span className="flex items-center gap-1 text-[#46474A]">
+              Generated by AI
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                <path d="M12 11v5M12 8v.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </span>
+            <button type="button" onClick={() => setExpanded(false)} className="underline">
+              View less
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -36,11 +36,13 @@ export default function PdpSummary({
   content,
   onOpenReviews,
   noVariantsExtra,
+  sponsored,
 }: {
   item: WalmartItem;
   content: PdpContent;
   onOpenReviews: () => void;
   noVariantsExtra?: ReactNode;
+  sponsored?: boolean;
 }) {
   const [color, setColor] = useState(0);
   const savings = savingsOf(item);
@@ -51,7 +53,7 @@ export default function PdpSummary({
 
   return (
     <section className="flex flex-col gap-2 px-4 pb-4 pt-2">
-      {badges.length > 0 && (
+      {!sponsored && badges.length > 0 && (
         <div className="flex flex-nowrap gap-2 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {badges.slice(0, 3).map((b) => (
             <span
@@ -68,6 +70,8 @@ export default function PdpSummary({
           ))}
         </div>
       )}
+
+      {sponsored && <p className="text-[12px] leading-4 text-[#74767C]">Sponsored</p>}
 
       <div className="flex items-start justify-between gap-3">
         <span className="min-w-0 truncate text-[12px] leading-5 text-ld-text-default underline">
