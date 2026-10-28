@@ -200,9 +200,6 @@ export default function ItemPage({
 
         <div className="sticky bottom-0 z-30 bg-white">
           <PurchaseBar onAddToCart={() => setSheet("cart")} />
-          <div className="flex h-[17px] items-center justify-center bg-white transition-colors duration-300 ease-out">
-            <div className="h-[5px] w-[135px] rounded-full bg-black" />
-          </div>
         </div>
       </div>
 

@@ -172,9 +172,9 @@ export default function PdpSummary({
         <span className="shrink-0 text-[28px] font-normal leading-8 text-[#2A8703]">
           {item.priceWas ? "Now " : ""}${item.priceDollars}.{item.priceCents}
         </span>
-        <div className="flex min-w-0 flex-col gap-1">
+        <div className="flex min-w-0 flex-col justify-center gap-0.5 whitespace-nowrap">
           {(savings || item.priceWas) && (
-            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+            <div className="flex items-center gap-1.5">
               {savings && (
                 <>
                   <span className="rounded bg-[#E7F5E2] px-1.5 py-0.5 text-[12px] font-bold leading-4 text-[#2E2F32]">
@@ -186,7 +186,6 @@ export default function PdpSummary({
               {item.priceWas && (
                 <span className="text-[13px] leading-5 text-black line-through">${item.priceWas}</span>
               )}
-              <InfoIcon size={14} className="shrink-0 text-[#2E2F32]" />
             </div>
           )}
           <div className="flex items-center gap-1 text-[12px] leading-4 text-[#74767C]">
