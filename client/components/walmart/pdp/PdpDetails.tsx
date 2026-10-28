@@ -73,16 +73,29 @@ export function Specifications({ content }: { content: PdpContent }) {
 
 export function QuickActions() {
   const chip =
-    "flex h-8 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full border border-walmart-gray-line bg-white px-3 text-[14px] font-semibold leading-5 text-ld-text-default active:bg-walmart-gray-bg";
+    "flex h-8 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-[#2E2F32] bg-white px-3 text-[14px] font-semibold leading-5 text-ld-text-default active:bg-walmart-gray-bg";
+  const icon = { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none" } as const;
+  const stroke = { stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round" } as const;
   return (
-    <div className="flex gap-2 overflow-x-auto bg-white px-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div className="flex gap-2 overflow-x-auto bg-white px-3 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <button type="button" className={chip}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M4 10v4h3l5 4V6L7 10H4Zm12-2a5.5 5.5 0 0 1 0 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <svg {...icon}>
+          <path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Zm0 9L4 7.5M12 12l8-4.5M12 12v9" {...stroke} />
         </svg>
-        Hear overview and reviews (01:12)
+        View in 3D
       </button>
-      <button type="button" className={chip}>Shop similar</button>
+      <button type="button" className={chip}>
+        <svg {...icon}>
+          <path d="M4 10v4h3l5 4V6L7 10H4Zm12-2a5.5 5.5 0 0 1 0 8" {...stroke} />
+        </svg>
+        Hear summary (01:15)
+      </button>
+      <button type="button" className={chip}>
+        <svg {...icon}>
+          <path d="M4 8h14l-3-3m5 11H6l3 3" {...stroke} />
+        </svg>
+        Shop similar
+      </button>
     </div>
   );
 }

@@ -50,12 +50,17 @@ export default function PdpSummary({
   return (
     <section className="flex flex-col gap-3 px-4 pb-4 pt-3">
       {badges.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-nowrap gap-2 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {badges.slice(0, 3).map((b) => (
             <span
               key={b}
-              className={`rounded-full px-2.5 py-1 text-[12px] font-bold leading-4 ${badgeClass(b)}`}
+              className={`shrink-0 rounded-full px-2.5 py-1 text-[12px] font-bold leading-4 ${badgeClass(b)}`}
             >
+              {b.toLowerCase() === "rollback" && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="mr-1 inline-block align-[-2px]">
+                  <path d="M12 4v15m0 0-6-6m6 6 6-6" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
               {b}
             </span>
           ))}
@@ -63,7 +68,7 @@ export default function PdpSummary({
       )}
 
       <div className="flex items-start justify-between gap-3">
-        <span className="text-[13px] leading-5 text-ld-text-default underline">
+        <span className="min-w-0 truncate text-[12px] leading-5 text-ld-text-default underline">
           {content.brand ? `Visit the ${content.brand} store` : item.store}
         </span>
         <button
@@ -77,7 +82,7 @@ export default function PdpSummary({
         </button>
       </div>
 
-      <h1 className="text-[15px] font-normal leading-[21px] text-ld-text-default">{item.title}</h1>
+      <h1 className="text-[15px] font-bold leading-[21px] text-ld-text-default">{item.title}</h1>
 
       {swatches.length > 1 && (
         <div className="flex flex-col gap-2">

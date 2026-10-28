@@ -143,11 +143,10 @@ export default function ItemPage({
             onSwipePrevItem={onSwipePrevItem}
             onSwipeNextItem={onSwipeNextItem}
           />
-          {!isSponsoredVideo && hasAiSummary && <QuickActions />}
+          {!isSponsoredVideo && <QuickActions />}
         </div>
 
         <div className="relative z-10 bg-white">
-          <SparkyChips onOpen={() => setSheet("sparky")} />
           {isSponsoredVideo ? (
             <section className="border-b border-[#E3E4E5] px-4 py-4">
               <p className="text-[12px] leading-4 text-[#74767C]">Sponsored</p>
@@ -171,6 +170,7 @@ export default function ItemPage({
             <>
               <OnePayCard />
               <PdpFulfillment item={item} content={content} />
+              {hasAiSummary && <SparkyChips onOpen={() => setSheet("sparky")} />}
               <Divider />
               <KeyFeatures content={content} />
               <Specifications content={content} />
