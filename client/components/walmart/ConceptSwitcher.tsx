@@ -2,14 +2,14 @@ export type NavConcept = 1 | 2 | 3 | 4;
 
 const CONCEPTS: { id: NavConcept; label: string; description: string }[] = [
   {
-    id: 1,
-    label: "Concept 1",
-    description: "Peek carousel only, no indicator",
-  },
-  {
     id: 2,
     label: "Concept 2",
     description: "Peek carousel + up-next thumbnails",
+  },
+  {
+    id: 1,
+    label: "Concept 1",
+    description: "Peek carousel only, no indicator",
   },
   {
     id: 3,
