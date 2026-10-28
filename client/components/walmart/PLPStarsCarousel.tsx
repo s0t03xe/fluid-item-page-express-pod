@@ -24,11 +24,19 @@ export default function PLPStarsCarousel({
 
       <div data-plp-hscroll className="mt-3 flex gap-3 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {items.map((item) => (
-          <div key={item.id} data-plp-id={item.id} className="flex w-[168px] shrink-0 flex-col gap-1.5">
+          <div
+            key={item.id}
+            data-plp-id={item.id}
+            onClick={() => onSelect(item)}
+            className="flex w-[168px] shrink-0 cursor-pointer flex-col gap-1.5"
+          >
             <div className="relative">
               <button
                 type="button"
-                onClick={() => onSelect(item)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelect(item);
+                }}
                 aria-label={item.title}
                 className="block aspect-square w-full bg-white"
               >
@@ -40,13 +48,17 @@ export default function PLPStarsCarousel({
               <button
                 type="button"
                 aria-label="Add to list"
+                onClick={(e) => e.stopPropagation()}
                 className="absolute right-0 top-0 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-sm"
               >
                 <Heart size={14} />
               </button>
               <button
                 type="button"
-                onClick={() => onSelect(item)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelect(item);
+                }}
                 className="absolute bottom-0 left-0 flex h-9 items-center rounded-full bg-walmart-blue px-3 text-[15px] font-bold text-white active:opacity-90"
               >
                 + Add
@@ -62,7 +74,10 @@ export default function PLPStarsCarousel({
             )}
             <button
               type="button"
-              onClick={() => onSelect(item)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelect(item);
+              }}
               className="line-clamp-2 text-left text-[14px] leading-5 text-ld-text-default"
             >
               {item.title}

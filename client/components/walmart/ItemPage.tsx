@@ -41,6 +41,7 @@ export default function ItemPage({
   onAtTopChange,
   onSwipePrevItem,
   onSwipeNextItem,
+  onOpenItem,
   onSheetOpenChange,
   active = true,
 }: {
@@ -49,6 +50,7 @@ export default function ItemPage({
   onAtTopChange?: (atTop: boolean) => void;
   onSwipePrevItem?: () => void;
   onSwipeNextItem?: () => void;
+  onOpenItem?: (item: WalmartItem) => void;
   onSheetOpenChange?: (open: boolean) => void;
 }) {
   const atTopRef = useRef(true);
@@ -65,6 +67,7 @@ export default function ItemPage({
   const hasVariants = content.colors.length > 1;
   const trtb = topReasonToBuy(item.id);
   const openCart = () => setSheet("cart");
+  const openItem = (it: WalmartItem) => (onOpenItem ? onOpenItem(it) : openCart());
 
   useEffect(() => {
     if (active) return;
@@ -168,19 +171,19 @@ export default function ItemPage({
               <ProtectionPlan item={item} />
               <ListActions />
               <Divider />
-              <SponsoredCard item={item} onSelect={openCart} />
+              <SponsoredCard item={item} onSelect={openItem} />
               <WalmartPlusBanner />
               <RatedCarousel
                 item={item}
                 title="4 stars and above"
                 minRating={4}
-                onSelect={openCart}
+                onSelect={openItem}
               />
               <RatedCarousel
                 item={item}
                 title="Popular items in this category"
                 offset={2}
-                onSelect={openCart}
+                onSelect={openItem}
               />
               <AboutThisItem item={item} content={content} />
               <Divider />

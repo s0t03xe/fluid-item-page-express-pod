@@ -158,6 +158,10 @@ export default function ItemPageModal({
                   onSwipePrevItem={() => {
                     if (!sheetOpenMap[i]) emblaApi?.scrollPrev();
                   }}
+                  onOpenItem={(it) => {
+                    const idx = items.findIndex((x) => x.id === it.id);
+                    if (idx >= 0 && !sheetOpenMap[i]) emblaApi?.scrollTo(idx);
+                  }}
                   onSwipeNextItem={() => {
                     if (!sheetOpenMap[i]) emblaApi?.scrollNext();
                   }}

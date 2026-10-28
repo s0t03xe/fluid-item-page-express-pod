@@ -12,14 +12,14 @@ export function SponsoredCard({
   onSelect,
 }: {
   item: WalmartItem;
-  onSelect: () => void;
+  onSelect: (item: WalmartItem) => void;
 }) {
   const pick = others(item).find((i) => i.sponsored);
   if (!pick) return null;
   return (
     <section className="px-4 py-2">
       <div className="rounded-xl border border-walmart-gray-line px-3">
-        <PLPProductCard item={pick} onSelect={onSelect} />
+        <PLPProductCard item={pick} onSelect={() => onSelect(pick)} />
       </div>
     </section>
   );
@@ -34,7 +34,7 @@ export function RatedCarousel({
 }: {
   item: WalmartItem;
   title: string;
-  onSelect: () => void;
+  onSelect: (item: WalmartItem) => void;
   minRating?: number;
   offset?: number;
 }) {
