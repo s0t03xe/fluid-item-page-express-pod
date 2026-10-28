@@ -160,9 +160,9 @@ export default function PLPStarsCarousel({
                 <button
                   type="button"
                   onClick={open}
-                  className="line-clamp-3 block text-left text-[14px] leading-4 text-ld-text-default"
+                  className="block text-left text-[14px] leading-4 text-ld-text-default"
                 >
-                  {item.title}
+                  <span className="line-clamp-3">{item.title}</span>
                 </button>
                 <TileRating item={item} />
                 {popular && item.saveWithPlus && <SaveWithPlus />}

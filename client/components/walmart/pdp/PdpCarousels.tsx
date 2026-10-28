@@ -62,9 +62,9 @@ export function SponsoredCard({
             <button
               type="button"
               onClick={() => onSelect(pick)}
-              className="mt-1 line-clamp-3 block text-left text-[14px] leading-4 text-ld-text-default"
+              className="mt-1 block text-left text-[14px] leading-4 text-ld-text-default"
             >
-              {pick.title}
+              <span className="line-clamp-3">{pick.title}</span>
             </button>
             <div className="mt-1.5">
               <TileRating item={pick} />
