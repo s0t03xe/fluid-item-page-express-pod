@@ -61,7 +61,6 @@ function VideoPageIcon({ active }: { active?: boolean }) {
   );
 }
 
-const VIDEO_INDICES = new Set([1, 2, 9]);
 const PLACEHOLDER_DOT_COUNT = 4;
 const SWIPE_THRESHOLD = 32;
 const EDGE_ZONE = 28;
@@ -86,21 +85,28 @@ const SLIDES: Slide[] = [
 
 interface ProductGalleryProps {
   heroImage?: string;
+  videoSrc?: string;
+  videoPoster?: string;
   onSwipePrevItem?: () => void;
   onSwipeNextItem?: () => void;
 }
 
 export default function ProductGallery(props: ProductGalleryProps = {}) {
-  const { heroImage, onSwipePrevItem, onSwipeNextItem } = props;
+  const { heroImage, videoSrc, videoPoster, onSwipePrevItem, onSwipeNextItem } = props;
   const [active, setActive] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchStartAtEdge = useRef<"start" | "end" | null>(null);
   const dragState = useRef<{ startX: number; startScrollLeft: number; edge: "start" | "end" | null } | null>(null);
 
-  const slides: Slide[] = heroImage
-    ? [{ kind: "photo", img: heroImage, badge: "Shop similar" }]
-    : SLIDES;
+  const slides: Slide[] = videoSrc && videoPoster
+    ? [
+        { kind: "video", src: videoSrc, poster: videoPoster, variant: "product", fill: true },
+        { kind: "photo", img: heroImage ?? videoPoster, badge: "Shop similar" },
+      ]
+    : heroImage
+      ? [{ kind: "photo", img: heroImage, badge: "Shop similar" }]
+      : SLIDES;
   const totalSlides = slides.length;
 
   // Sync active dot on scroll
@@ -268,7 +274,7 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
       {totalSlides > 1 ? (
         <div className="flex items-center justify-center py-2">
           {Array.from({ length: totalSlides }).map((_, i) => {
-            const isVideo = VIDEO_INDICES.has(i);
+            const isVideo = slides[i]?.kind === "video";
             const isActive = i === active;
             return (
               <button

@@ -87,6 +87,8 @@ export default function ItemPage({
         <div className="sticky top-0 z-0">
           <ProductGallery
             heroImage={item.richGallery ? undefined : item.image}
+            videoSrc={item.galleryVideoSrc}
+            videoPoster={item.galleryVideoPoster}
             onSwipePrevItem={onSwipePrevItem}
             onSwipeNextItem={onSwipeNextItem}
           />

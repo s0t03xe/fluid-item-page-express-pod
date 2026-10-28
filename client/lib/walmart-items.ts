@@ -3,6 +3,8 @@ export interface WalmartItem {
   image: string;
   /** Only items flagged true use the full photo/video digest gallery. */
   richGallery?: boolean;
+  galleryVideoSrc?: string;
+  galleryVideoPoster?: string;
   title: string;
   store: string;
   rating: number;
@@ -28,10 +30,14 @@ const BEATS_IMG =
   "https://cdn.builder.io/api/v1/image/assets%2F02297b1ff48d4a2f8e4d9ed415c47ecf%2F8f62d61b205a46d3ad560688f10c7804";
 const ABCPOW_IMG =
   "https://cdn.builder.io/api/v1/image/assets%2F02297b1ff48d4a2f8e4d9ed415c47ecf%2Fc214c486537a4446abe2ab3bab8b9f20";
-const MONSTER_IMG =
-  "https://cdn.builder.io/api/v1/image/assets%2F02297b1ff48d4a2f8e4d9ed415c47ecf%2Fa38e092395b24bba841e739591f407b7";
 const JLAB_EARBUDS_IMG =
   "https://cdn.builder.io/api/v1/image/assets%2F02297b1ff48d4a2f8e4d9ed415c47ecf%2F544c4c237f3342fb86b80bfa50fee769";
+const HYBRID_HEADPHONES_IMG =
+  "https://i5.walmartimages.com/seo/ybrid-Active-Noise-Cancelling-Headphones-Wireless-Bluetooth-Ear-50dB-ANC-120H-Playback-6-MIC-ENC-Clear-Calls-Hi-Res-360-Spatial-Audio-Foldable-Comfor_7d320cd6-f8f2-4832-9ad1-79ed0f93b8cc.d98752bb32bdc2e0b94df1c2f1758540.jpeg?odnHeight=328&odnWidth=328&odnBg=FFFFFF";
+const HYBRID_HEADPHONES_VIDEO =
+  "https://vds.prod.walmartimages.com/thunder/assets/media-service/wcnp-prod/videos/73e74f4e-092e-496f-9e39-123b6fa23566/transcode/825b7790-deac-401d-b30d-336f1a72ad3f/640x360_PROGRESSIVE-2500_30_640x360.mp4";
+const HYBRID_HEADPHONES_VIDEO_POSTER =
+  "https://vds.prod.walmartimages.com/thunder/assets/media-service/wcnp-prod/videos/73e74f4e-092e-496f-9e39-123b6fa23566/thumbnail-async-ab7.jpeg";
 
 export const WALMART_ITEMS: WalmartItem[] = [
   {
@@ -67,21 +73,21 @@ export const WALMART_ITEMS: WalmartItem[] = [
     shippingLines: ["Shipping arrives Thu, Jul 16"],
   },
   {
-    id: "jbl-tune-510",
-    image: MONSTER_IMG,
+    id: "hybrid-anc-headphones",
+    image: HYBRID_HEADPHONES_IMG,
     title:
-      "JBL Tune 510BT - Wireless on-ear headphones - Pure Bass. Zero Cables. - White",
-    store: "Visit the JBL store",
-    rating: 4.5,
-    ratingCount: "2,777",
-    priceDollars: "49",
-    priceCents: "95",
-    priceWas: "64.95",
-    savings: "15.00",
-    optionsFrom: "37.95",
-    monthly: "25",
-    badge: "Top rated for battery life",
-    shippingLines: ["Free shipping, arrives in 3+ days"],
+      "Hybrid Active Noise Cancelling Headphones Wireless Bluetooth Over Ear - 50dB ANC, 120H Playback, 6-MIC ENC Clear Calls, Hi-Res 360° Spatial Audio, Foldable Comfort for Travel Office",
+    store: "Visit the store",
+    rating: 4.4,
+    ratingCount: "204",
+    priceDollars: "39",
+    priceCents: "79",
+    priceWas: "339.99",
+    sponsored: true,
+    badge: "Best seller",
+    shippingLines: ["Free shipping, arrives tomorrow"],
+    galleryVideoSrc: HYBRID_HEADPHONES_VIDEO,
+    galleryVideoPoster: HYBRID_HEADPHONES_VIDEO_POSTER,
   },
   {
     id: "skullcandy-hesh",
