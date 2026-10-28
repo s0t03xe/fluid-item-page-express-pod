@@ -85,6 +85,7 @@ const SLIDES: Slide[] = [
 
 interface ProductGalleryProps {
   heroImage?: string;
+  images?: string[];
   videoSrc?: string;
   videoPoster?: string;
   emphasizeVideo?: boolean;
@@ -93,7 +94,7 @@ interface ProductGalleryProps {
 }
 
 export default function ProductGallery(props: ProductGalleryProps = {}) {
-  const { heroImage, videoSrc, videoPoster, emphasizeVideo, onSwipePrevItem, onSwipeNextItem } = props;
+  const { heroImage, images, videoSrc, videoPoster, emphasizeVideo, onSwipePrevItem, onSwipeNextItem } = props;
   const [active, setActive] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
@@ -105,7 +106,9 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
         { kind: "video", src: videoSrc, poster: videoPoster, variant: "product", fill: true },
         { kind: "photo", img: heroImage ?? videoPoster, badge: "Shop similar" },
       ]
-    : heroImage
+    : images && images.length > 0
+      ? images.map((img): Slide => ({ kind: "photo", img }))
+      : heroImage
       ? [{ kind: "photo", img: heroImage, badge: "Shop similar" }]
       : SLIDES;
   const totalSlides = slides.length;
@@ -235,7 +238,7 @@ export default function ProductGallery(props: ProductGalleryProps = {}) {
                 <img
                   src={slide.img}
                   alt=""
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full ${images && images.length > 0 ? "object-contain" : "object-cover"}`}
                 />
               </>
             )}

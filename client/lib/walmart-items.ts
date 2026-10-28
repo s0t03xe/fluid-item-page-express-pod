@@ -362,17 +362,16 @@ export const WALMART_ITEMS: WalmartItem[] = [
   },
 ];
 
-const byId = (id: string) => {
+export const byId = (id: string) => {
   const item = WALMART_ITEMS.find((i) => i.id === id);
   if (!item) throw new Error(`Unknown item ${id}`);
   return item;
 };
 
-/** Items in the order they appear on the search listing (also the item-page pager order). */
+/** Item-page pager order: follows the search listing rows, so the sponsored video ad is the 3rd card. */
 export const PLP_ORDER: WalmartItem[] = [
-  "veatool-65hr",
-  "anc-45db-black",
   "bt-over-ear-65hr",
+  "anc-45db-black",
   "hybrid-anc-headphones",
   "airpods-4",
   "deal-45db-25-79",
@@ -385,3 +384,10 @@ export const PLP_ORDER: WalmartItem[] = [
   "skullcandy-hesh",
   "onn-pink",
 ].map(byId);
+
+/** Listing tiles that share a product with a pager item resolve to it. */
+export const pagerIndexOf = (item: WalmartItem) => {
+  const target = item.id === "veatool-65hr" ? "bt-over-ear-65hr" : item.id;
+  const index = PLP_ORDER.findIndex((i) => i.id === target);
+  return index >= 0 ? index : 0;
+};

@@ -7,15 +7,17 @@ import PLPRating, { Fulfillment, SaveWithPlus } from "@/components/walmart/PLPRa
 export default function PLPStarsCarousel({
   items,
   onSelect,
+  title,
 }: {
   items: WalmartItem[];
   onSelect: (item: WalmartItem) => void;
+  title?: string;
 }) {
   return (
     <section className="border-b border-walmart-gray-line bg-white py-4">
       <div className="flex items-baseline justify-between px-4">
         <h2 className="text-[18px] font-bold leading-6 text-ld-text-default">
-          4 stars and above ({items.length + 7})
+          {title ?? `4 stars and above (${items.length + 7})`}
         </h2>
         <span className="text-[13px] leading-4 text-[#74767C]">Sponsored</span>
       </div>

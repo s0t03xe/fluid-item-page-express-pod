@@ -1,27 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import AddedToCartSheet from "@/components/walmart/AddedToCartSheet";
 import AskSparkySheet from "@/components/walmart/AskSparkySheet";
-import ReviewsSheet from "@/components/walmart/ReviewsSheet";
 import ProductGallery from "@/components/walmart/ProductGallery";
-import ProductActions from "@/components/walmart/ProductActions";
-import ProductInfo from "@/components/walmart/ProductInfo";
-import FulfillmentSection from "@/components/walmart/FulfillmentSection";
-import EligibilityActions from "@/components/walmart/EligibilityActions";
-import ItemDetails from "@/components/walmart/ItemDetails";
-import ProtectionPlan from "@/components/walmart/ProtectionPlan";
-import BuyBoxAd from "@/components/walmart/BuyBoxAd";
-import P13NCarousel from "@/components/walmart/P13NCarousel";
-import TotalWirelessBanner from "@/components/walmart/TotalWirelessBanner";
-import SparkyCopilot from "@/components/walmart/SparkyCopilot";
 import OnePayCard from "@/components/walmart/OnePayCard";
-import SimilarItemsCarousel from "@/components/walmart/SimilarItemsCarousel";
-import AboutThisItem from "@/components/walmart/AboutThisItem";
-import RefineSearch from "@/components/walmart/RefineSearch";
-import CustomerReviews from "@/components/walmart/CustomerReviews";
-import RewardsDebitCard from "@/components/walmart/RewardsDebitCard";
-import CustomersAlsoConsidered from "@/components/walmart/CustomersAlsoConsidered";
-import FeedbackBanner from "@/components/walmart/FeedbackBanner";
+import PdpSummary from "@/components/walmart/pdp/PdpSummary";
+import PdpFulfillment from "@/components/walmart/pdp/PdpFulfillment";
+import { KeyFeatures, QuickActions, SparkyChips, Specifications } from "@/components/walmart/pdp/PdpDetails";
+import { PdpReviewsSheet, ReviewsSummary } from "@/components/walmart/pdp/PdpReviews";
+import { ListActions, ProtectionPlan, WalmartPlusBanner } from "@/components/walmart/pdp/PdpExtras";
+import {
+  AboutThisItem,
+  CompareItems,
+  RatedCarousel,
+  RefineSearch,
+  SimilarItems,
+  SponsoredCard,
+} from "@/components/walmart/pdp/PdpCarousels";
+import { Divider } from "@/components/walmart/pdp/ui";
 import PurchaseBar from "@/components/walmart/PurchaseBar";
+import { getPdpContent } from "@/lib/pdp-content";
 import type { WalmartItem } from "@/lib/walmart-items";
 
 function SponsoredItemDetails({ item }: { item: WalmartItem }) {
@@ -82,6 +79,10 @@ export default function ItemPage({
   const [sheet, setSheet] = useState<"cart" | "sparky" | "reviews" | null>(null);
   const isSponsoredVideo = Boolean(item.sponsored && item.galleryVideoSrc);
   const closeSheet = () => setSheet(null);
+  const content = getPdpContent(item);
+  const hasContent = content.keyFeatures.length > 0;
+  const hasAiSummary = content.videos.length > 0;
+  const openCart = () => setSheet("cart");
 
   useEffect(() => {
     onSheetOpenChange?.(sheet !== null);
@@ -127,13 +128,14 @@ export default function ItemPage({
         <div className="sticky top-0 z-0">
           <ProductGallery
             heroImage={item.richGallery ? undefined : item.image}
+            images={isSponsoredVideo || item.richGallery ? undefined : content.gallery}
             videoSrc={item.galleryVideoSrc}
             videoPoster={item.galleryVideoPoster}
             emphasizeVideo={isSponsoredVideo}
             onSwipePrevItem={onSwipePrevItem}
             onSwipeNextItem={onSwipeNextItem}
           />
-          {!isSponsoredVideo && <ProductActions />}
+          {!isSponsoredVideo && hasAiSummary && <QuickActions />}
         </div>
 
         <div className="relative z-10 bg-white">
@@ -148,16 +150,9 @@ export default function ItemPage({
               </p>
             </section>
           ) : (
-            <ProductInfo
-              title={item.title}
-              store={item.store}
-              rating={item.rating}
-              ratingCount={item.ratingCount}
-              priceDollars={item.priceDollars}
-              priceCents={item.priceCents}
-              priceWas={item.priceWas}
-              savings={item.savings}
-              monthly={item.monthly}
+            <PdpSummary
+              item={item}
+              content={content}
               onOpenReviews={() => setSheet("reviews")}
             />
           )}
@@ -165,36 +160,32 @@ export default function ItemPage({
             <SponsoredItemDetails item={item} />
           ) : (
             <>
-              <FulfillmentSection />
-              <EligibilityActions />
-              <div className="mx-4 h-px bg-[#E3E4E5]" />
-              <ItemDetails />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <ProtectionPlan />
-              <BuyBoxAd />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <P13NCarousel />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <TotalWirelessBanner />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <SparkyCopilot onOpen={() => setSheet("sparky")} />
-              <div className="h-px w-full bg-[#E3E4E5]" />
               <OnePayCard />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <SimilarItemsCarousel />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <AboutThisItem />
-              <div className="h-px w-full bg-[#E3E4E5]" />
+              <PdpFulfillment item={item} content={content} />
+              {hasAiSummary && <SparkyChips onOpen={() => setSheet("sparky")} />}
+              <Divider />
+              <KeyFeatures content={content} />
+              <Specifications content={content} />
+              <Divider />
+              <ReviewsSummary
+                item={item}
+                content={content}
+                onOpenReviews={() => setSheet("reviews")}
+              />
+              <Divider />
+              <ProtectionPlan item={item} />
+              <ListActions />
+              <Divider />
+              <SponsoredCard item={item} onSelect={openCart} />
+              <WalmartPlusBanner />
+              <RatedCarousel item={item} title="4 stars and above" minRating={4} onSelect={openCart} />
+              <RatedCarousel item={item} title="Popular items in this category" offset={2} onSelect={openCart} />
+              <AboutThisItem item={item} content={content} />
+              <Divider />
+              <SimilarItems content={content} />
+              <CompareItems item={item} />
+              <Divider />
               <RefineSearch />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <CustomerReviews onOpenReviews={() => setSheet("reviews")} />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <RewardsDebitCard />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <CustomersAlsoConsidered />
-              <div className="h-px w-full bg-[#E3E4E5]" />
-              <FeedbackBanner />
-              <div className="h-px w-full bg-[#E3E4E5]" />
             </>
           )}
         </div>
@@ -211,11 +202,11 @@ export default function ItemPage({
 
       <AddedToCartSheet open={sheet === "cart"} onClose={closeSheet} />
       <AskSparkySheet open={sheet === "sparky"} onClose={closeSheet} item={item} />
-      <ReviewsSheet
+      <PdpReviewsSheet
         open={sheet === "reviews"}
         onClose={closeSheet}
-        rating={item.rating}
-        ratingCount={item.ratingCount}
+        item={item}
+        content={content}
       />
     </div>
   );
