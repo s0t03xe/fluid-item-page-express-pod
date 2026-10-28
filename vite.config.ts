@@ -5,6 +5,10 @@ import { createServer } from "./server";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base:
+    process.env.GITHUB_PAGES === "true"
+      ? "/fluid-item-page-express-pod/"
+      : "/",
   server: {
     host: "::",
     port: 8080,
